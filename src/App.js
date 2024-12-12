@@ -1,8 +1,10 @@
+import HomePage from "./pages/Home";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Moviedux</h1>
-    </div>
+    <>
+      <HomePage />
+    </>
   );
 }
 
