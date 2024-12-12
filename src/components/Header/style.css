@@ -1,3 +1,46 @@
-.header {
+header {
   margin-top: 50px;
+}
+
+.logo {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  display: block;
+}
+
+.app-subtitle {
+  text-align: center;
+  margin: 25px auto;
+  font-weight: 300;
+}
+
+nav {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;  
+  display: flex;
+  justify-content: center;
+}
+
+ul li {
+  padding: 10px;
+}
+
+nav a {
+  color:black;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .5);
+}
+
+nav a:hover {
+  background-color: #E7F2F1;
+  color: black;
 }
