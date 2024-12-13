@@ -32,16 +32,16 @@
 }
 
 /* Movies Grid Styles */
-.movies-grid, .watchlist {
+/* .movies-grid, .watchlist {
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);
   gap: 2rem 2rem;  
   padding: 1rem;
   justify-content: center;
-}
+} */
 
 /* Movie Card Styles */
-.movie-card {
+/* .movie-card {
   background-color: #272727;
   border-radius: 8px;
   overflow: hidden;
@@ -87,7 +87,7 @@
 .movie-card-genre {
   font-size: 0.9rem;
   margin-right: 10px;
-}
+} */
 
 /* Watchlist Button Styles */
 .watchlist-btn {
