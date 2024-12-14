@@ -14,8 +14,12 @@ const MovieGrids = () => {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    console.log(searchTerm)
+    // console.log(searchTerm);
   };
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
@@ -27,7 +31,7 @@ const MovieGrids = () => {
         onChange={handleSearchChange}
       />
       <div className="movies__grid">
-        {movies.map(({ id, title, image, genre, rating }) => (
+        {filteredMovies.map(({ id, title, image, genre, rating }) => (
           <MovieCard
             key={id}
             imageSrc={image}
