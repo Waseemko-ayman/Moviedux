@@ -4,6 +4,7 @@ import MovieCard from "../MovieCard";
 
 const MovieGrids = () => {
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("movies.json")
@@ -11,20 +12,34 @@ const MovieGrids = () => {
       .then((data) => setMovies(data));
   }, []);
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    console.log(searchTerm)
+  };
+
   return (
-    <div className="movies__grid">
-      {movies.map(({ id, title, image, genre, rating }) => (
-        <MovieCard
-          key={id}
-          imageSrc={image}
-          imageAlt={title}
-          imageTitle={title}
-          title={title}
-          genre={genre}
-          rating={rating}
-        />
-      ))}
-    </div>
+    <>
+      <input
+        type="text"
+        className="search__input"
+        placeholder="Search movies..."
+        value={searchTerm}
+        onChange={handleSearchChange}
+      />
+      <div className="movies__grid">
+        {movies.map(({ id, title, image, genre, rating }) => (
+          <MovieCard
+            key={id}
+            imageSrc={image}
+            imageAlt={title}
+            imageTitle={title}
+            title={title}
+            genre={genre}
+            rating={rating}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
