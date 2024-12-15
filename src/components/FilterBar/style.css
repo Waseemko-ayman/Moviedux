@@ -1,0 +1,24 @@
+.filter__bar {
+  display: flex;
+  justify-content: right;
+}
+
+.filter__slot {
+  background-color: #2c2c2c;
+  padding: 5px 25px;
+  margin: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.filter__slot label {
+  cursor: pointer;
+}
+
+.filter__dropdown {
+  padding: 8px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}

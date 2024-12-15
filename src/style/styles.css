@@ -1,23 +1,5 @@
 /* Genre and Filter Bar Styles */
-.filter-bar {
-  display: flex;
-  justify-content: right;
-}
 
-.filter-slot {
-  background-color: #2c2c2c;
-  padding: 0 25px;
-  margin: 10px;
-  border-radius: 50px;
-}
-
-.filter-dropdown {
-  padding: 8px;
-  margin: 10px;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #333;
-}
 
 /* Watchlist Button Styles */
 .watchlist-btn {
