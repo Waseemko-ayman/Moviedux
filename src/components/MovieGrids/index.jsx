@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style.css";
 import MovieCard from "../MovieCard";
 import FilterBar from "../FilterBar";
 
-const MovieGrids = () => {
-  const [movies, setMovies] = useState([]);
+const MovieGrids = ({ movies }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [genre, setGenre] = useState("All Genres");
@@ -24,7 +23,8 @@ const MovieGrids = () => {
 
   const matchesGenre = (movie, genre) => {
     return (
-      genre === "All Genres" || movie.genre.toLowerCase() === genre.toLowerCase()
+      genre === "All Genres" ||
+      movie.genre.toLowerCase() === genre.toLowerCase()
     );
   };
 
@@ -53,12 +53,6 @@ const MovieGrids = () => {
       matchesRating(movie, rating) &&
       matchesSearchTerm(movie, searchTerm)
   );
-
-  useEffect(() => {
-    fetch("movies.json")
-      .then((response) => response.json())
-      .then((data) => setMovies(data));
-  }, []);
 
   return (
     <>

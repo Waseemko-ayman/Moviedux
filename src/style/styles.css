@@ -1,24 +1,3 @@
-/* Genre and Filter Bar Styles */
-
-
-/* Watchlist Button Styles */
-.watchlist-btn {
-  border: none;
-  background: #2196F3;
-  color: white;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-/* Footer Styles */
-.title {
-  text-align: center;
-  margin: 25px 0;
-}
-
 .switch {
   margin: 20px auto;
   position: relative;
