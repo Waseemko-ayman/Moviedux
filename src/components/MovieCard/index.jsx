@@ -2,12 +2,9 @@ import React from "react";
 import "./style.css";
 
 const MovieCard = ({
-  imageSrc,
-  imageAlt,
-  imageTitle,
-  title,
-  genre,
-  rating,
+  isWatchlisted,
+  movie,
+  handleToggleWatchlist,
 }) => {
   const handleError = (e) => {
     e.target.src = "assets/default.jpg";
@@ -25,17 +22,33 @@ const MovieCard = ({
   return (
     <div className="movie__card">
       <img
-        src={`assets/${imageSrc}`}
-        alt={imageAlt}
-        title={imageTitle}
+        src={`assets/${movie.image}`}
+        alt={movie.imageAlt}
+        title={movie.imageTitle}
         onError={handleError}
       />
       <div className="movie__card__info">
-        <h3 className="movie__card__title">{title}</h3>
-        <p className="movie__card__genre">{genre}</p>
-        <p className={`movie__card__rating ${getRatingClass(rating)}`}>
-          {rating}
-        </p>
+        <h3 className="movie__card__title">{movie.title}</h3>
+        <div>
+          <span className="movie__card__genre">{movie.genre}</span>
+          <span
+            className={`movie__card__rating ${getRatingClass(movie.rating)}`}
+          >
+            {movie.rating}
+          </span>
+        </div>
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={isWatchlisted}
+            onChange={() => handleToggleWatchlist(movie.id)}
+          />
+          <span className="slider">
+            <span className="slider__label">
+              {isWatchlisted ? "In Watchlist" : "Add to Watchlist"}
+            </span>
+          </span>
+        </label>
       </div>
     </div>
   );

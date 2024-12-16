@@ -3,7 +3,7 @@ import "./style.css";
 import MovieCard from "../MovieCard";
 import FilterBar from "../FilterBar";
 
-const MovieGrids = ({ movies }) => {
+const MovieGrids = ({ movies, watchlist, handleToggleWatchlist }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [genre, setGenre] = useState("All Genres");
@@ -70,15 +70,12 @@ const MovieGrids = ({ movies }) => {
         handleRating={handleRatingChange}
       />
       <div className="movies__grid">
-        {filteredMovies.map(({ id, title, image, genre, rating }) => (
+        {filteredMovies.map((movie) => (
           <MovieCard
-            key={id}
-            imageSrc={image}
-            imageAlt={title}
-            imageTitle={title}
-            title={title}
-            genre={genre}
-            rating={rating}
+            key={movie.id}
+            movie={movie}
+            handleToggleWatchlist={handleToggleWatchlist}
+            isWatchlisted={watchlist.includes(movie.id)}
           />
         ))}
       </div>
