@@ -5,10 +5,9 @@
 
 .filter__slot {
   background-color: #2c2c2c;
-  padding: 5px 25px;
+  padding: 5px 20px;
   margin: 10px;
   border-radius: 50px;
-  cursor: pointer;
 }
 
 .filter__slot label {
@@ -16,9 +15,12 @@
 }
 
 .filter__dropdown {
-  padding: 8px;
+  padding: 8px 0 8px 5px;
+  width: 100px;
   margin: 10px;
   border-radius: 5px;
-  background-color: #fff;
-  color: #333;
+  color: #fff;
+  background-color: #141414;
+  cursor: pointer;
+  outline: none;
 }
