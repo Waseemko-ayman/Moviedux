@@ -3,14 +3,19 @@ import "./style.css";
 import MovieCard from "../MovieCard";
 import FilterBar from "../FilterBar";
 import Loading from "../Loading";
+import { Navigate } from "react-router-dom";
+import ErrorFetching from "../ErrorFetching";
+import MoviesGridDiv from "../MoviesGridDiv";
 
 const MovieGrids = ({
   movies,
   watchlist,
   handleToggleWatchlist,
   isLoading,
+  hasError,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [movieId, setMovieId] = useState(null);
 
   const [genre, setGenre] = useState("All Genres");
   const [rating, setRating] = useState("All");
@@ -60,6 +65,10 @@ const MovieGrids = ({
       matchesSearchTerm(movie, searchTerm)
   );
 
+  const handleClick = (id) => {
+    setMovieId(id);
+  };
+
   return (
     <>
       <input
@@ -75,19 +84,27 @@ const MovieGrids = ({
         rating={rating}
         handleRating={handleRatingChange}
       />
-      {!isLoading && (
-        <div className="movies__grid">
-          {filteredMovies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              handleToggleWatchlist={handleToggleWatchlist}
-              isWatchlisted={watchlist.includes(movie.id)}
-            />
-          ))}
-        </div>
+      {hasError ? (
+        <ErrorFetching errorText="Error fetching movies !" />
+      ) : (
+        <>
+          {!isLoading && (
+            <MoviesGridDiv>
+              {filteredMovies.map((movie) => (
+                <MovieCard
+                  key={movie.id}
+                  movie={movie}
+                  handleToggleWatchlist={handleToggleWatchlist}
+                  isWatchlisted={watchlist.includes(movie.id)}
+                  handleClick={handleClick}
+                />
+              ))}
+            </MoviesGridDiv>
+          )}
+          {isLoading && <Loading />}
+          {movieId && <Navigate to={`${movieId}`} />}
+        </>
       )}
-      {isLoading && <Loading />}
     </>
   );
 };

@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
+import LinkItem from "../LinkItem";
 
 const Navbar = () => {
   return (
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <LinkItem linkPath="/" linkText="Home" />
         </li>
         <li>
-          <Link to="/watchlist">Watchlist</Link>
+          <LinkItem linkPath="/watchlist" linkText="Watchlist" />
         </li>
       </ul>
     </nav>

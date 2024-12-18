@@ -5,6 +5,7 @@ const MovieCard = ({
   isWatchlisted,
   movie,
   handleToggleWatchlist,
+  handleClick,
 }) => {
   const handleError = (e) => {
     e.target.src = "assets/default.jpg";
@@ -26,6 +27,7 @@ const MovieCard = ({
         alt={movie.imageAlt}
         title={movie.imageTitle}
         onError={handleError}
+        onClick={() => handleClick(movie.id)}
       />
       <div className="movie__card__info">
         <h3 className="movie__card__title">{movie.title}</h3>

@@ -2,12 +2,13 @@ import React from "react";
 import "./style.css";
 import * as T from "../../components/Typography";
 import MovieCard from "../../components/MovieCard";
+import MoviesGridDiv from "../../components/MoviesGridDiv";
 
 const WatchlistPage = ({ movies, watchlist, handleToggleWatchlist }) => {
   return (
     <div>
       <T.H1 className="title">Your Watchlist</T.H1>
-      <div className="watch__list">
+      <MoviesGridDiv>
         {watchlist.map((id) => {
           const movie = movies.find((movie) => movie.id === id);
           return (
@@ -19,7 +20,7 @@ const WatchlistPage = ({ movies, watchlist, handleToggleWatchlist }) => {
             />
           );
         })}
-      </div>
+      </MoviesGridDiv>
     </div>
   );
 };

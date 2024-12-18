@@ -3,14 +3,6 @@
   margin: 25px 0;
 }
 
-.watch__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem 2rem;
-  padding: 1rem;
-  justify-content: center;
-}
-
 .watch__list .watchlist-btn {
   border: none;
   background: #2196F3;

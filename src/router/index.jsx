@@ -10,6 +10,7 @@ const Router = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [watchlist, setWatchlist] = useState([]);
+  const [hasError, setHasError] = useState(false);
 
   const toggleWatchlist = (movieId) => {
     setWatchlist((prevState) =>
@@ -22,7 +23,12 @@ const Router = () => {
   useEffect(() => {
     fetch("movies.json")
       .then((response) => response.json())
-      .then((data) => setMovies(data), setIsLoading(false));
+      .then((data) => setMovies(data), setIsLoading(false))
+      .catch((error) => {
+        console.error("Error fetching movies:", error);
+        setHasError(true);
+        setIsLoading(false);
+      });
   }, []);
   return (
     <>
@@ -37,10 +43,11 @@ const Router = () => {
                   watchlist={watchlist}
                   handleToggleWatchlist={toggleWatchlist}
                   isLoading={isLoading}
+                  hasError={hasError}
                 />
               }
             />
-            <Route path=":id" element={<MoviePage />} />
+            <Route path=":id" element={<MoviePage hasError={hasError} />} />
           </Route>
 
           <Route

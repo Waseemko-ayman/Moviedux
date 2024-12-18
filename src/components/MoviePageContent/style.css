@@ -1,0 +1,130 @@
+.movie__page {
+  position: relative;
+  margin-top: 50px;
+}
+
+.movie__header {
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 40px;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease-in-out;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  width: fit-content;
+}
+
+.movie__title {
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffa100;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 10px;
+}
+
+.movie__tagline {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #fff;
+}
+
+.movie__content {
+  padding: 50px 20px;
+}
+
+.movie__details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.movie__info {
+  max-width: 55%;
+  padding-right: 40px;
+}
+
+.movie__info h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.movie__info p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.movie__rating {
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.movie__rating span {
+  font-size: 1.2rem;
+}
+
+.movie__poster__wrapper {
+  max-width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie__poster {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.movie__poster:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+@media (max-width: 768px) {
+  .movie__header {
+    height: 50vh;
+  }
+
+  .movie__title {
+    font-size: 2.5rem;
+  }
+
+  .movie__info {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .movie__rating {
+    font-size: 1rem;
+  }
+
+  .movie__poster-wrapper {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .movie__poster {
+    width: 80%;
+  }
+}
