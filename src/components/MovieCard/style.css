@@ -16,6 +16,7 @@
   display: block;
   object-fit: contain;
   object-position: center;
+  cursor: pointer;
 }
 
 .movie__card__info {

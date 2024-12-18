@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import "./style.css";
 import MovieCard from "../MovieCard";
 import FilterBar from "../FilterBar";
+import Loading from "../Loading";
 
-const MovieGrids = ({ movies, watchlist, handleToggleWatchlist }) => {
+const MovieGrids = ({
+  movies,
+  watchlist,
+  handleToggleWatchlist,
+  isLoading,
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [genre, setGenre] = useState("All Genres");
@@ -69,16 +75,19 @@ const MovieGrids = ({ movies, watchlist, handleToggleWatchlist }) => {
         rating={rating}
         handleRating={handleRatingChange}
       />
-      <div className="movies__grid">
-        {filteredMovies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            handleToggleWatchlist={handleToggleWatchlist}
-            isWatchlisted={watchlist.includes(movie.id)}
-          />
-        ))}
-      </div>
+      {!isLoading && (
+        <div className="movies__grid">
+          {filteredMovies.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              handleToggleWatchlist={handleToggleWatchlist}
+              isWatchlisted={watchlist.includes(movie.id)}
+            />
+          ))}
+        </div>
+      )}
+      {isLoading && <Loading />}
     </>
   );
 };
