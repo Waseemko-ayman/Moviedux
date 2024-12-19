@@ -1,7 +1,7 @@
 import React from "react";
-import * as T from "../../Typography";
+import * as T from "../../organism/Typography";
 import "./style.css";
-import LinkItem from "../LinkItem";
+import LinkItem from "../../atoms/LinkItem";
 
 const MoviePageContent = ({ movie }) => {
   return (

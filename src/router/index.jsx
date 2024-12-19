@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import WatchlistPage from "../pages/WatchlistPage";
-import MovieGrids from "../components/MovieGrids";
+import MovieGrids from "../components/molecules/MovieGrids";
 import { PATHS } from "./paths";
 import MoviePage from "../pages/MoviePage";
-import * as T from "../components/Typography";
+import * as T from "../components/organism/Typography";
 
 const Router = () => {
   const [movies, setMovies] = useState([]);

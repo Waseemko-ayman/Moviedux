@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Loading from "../../components/Loading";
-import ErrorFetching from "../../components/ErrorFetching";
 import { useParams } from "react-router-dom";
-import MoviePageContent from "../../components/MoviePageContent";
+import Loading from "../../components/molecules/Loading";
+import ErrorFetching from "../../components/atoms/ErrorFetching";
+import MoviePageContent from "../../components/molecules/MoviePageContent";
 
 const MoviePage = ({ hasError }) => {
   const { id } = useParams();

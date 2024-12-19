@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./style.css";
-import * as T from "../../components/Typography";
-import MovieCard from "../../components/MovieCard";
-import MoviesGridDiv from "../../components/MoviesGridDiv";
-import Loading from "../../components/Loading";
+import * as T from "../../components/organism/Typography";
+import MovieCard from "../../components/molecules/MovieCard";
+import MoviesGridDiv from "../../components/molecules/MoviesGridDiv";
+import Loading from "../../components/molecules/Loading";
 import { Navigate } from "react-router-dom";
 
 const WatchlistPage = ({

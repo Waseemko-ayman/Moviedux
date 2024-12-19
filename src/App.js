@@ -1,4 +1,4 @@
-import MainLayout from "./components/MainLayout";
+import MainLayout from "./components/organism/MainLayout";
 import Movies from "./pages/movies";
 
 function App() {
