@@ -12,8 +12,8 @@ const FilterBar = ({ handleGenre, handleRating, genre, rating }) => {
           value={genre}
           onChange={handleGenre}
         >
-          {GENRE_OPTIONS.map((option) => (
-            <option>{option}</option>
+          {GENRE_OPTIONS.map(({ id, type }) => (
+            <option key={id}>{type}</option>
           ))}
         </select>
       </div>
@@ -24,8 +24,8 @@ const FilterBar = ({ handleGenre, handleRating, genre, rating }) => {
           value={rating}
           onChange={handleRating}
         >
-          {RATING_OPTIONS.map((option) => (
-            <option>{option}</option>
+          {RATING_OPTIONS.map(({ id, type }) => (
+            <option key={id}>{type}</option>
           ))}
         </select>
       </div>

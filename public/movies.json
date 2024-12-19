@@ -2,7 +2,8 @@
   {
     "id": 1,
     "title": "Dark Storm",
-    "image": "1.jpg",
+    "imageSrc": "1.jpg",
+    "imageAlt": "Dark Storm",
     "genre": "drama",
     "rating": "8.3",
     "year": "2006",
@@ -11,7 +12,8 @@
   {
     "id": 2,
     "title": "Whisper of Fate",
-    "image": "2.jpg",
+    "imageSrc": "2.jpg",
+    "imageAlt": "Whisper of Fate",
     "genre": "fantasy",
     "rating": "7.7",
     "year": "2023",
@@ -20,7 +22,8 @@
   {
     "id": 3,
     "title": "Beyond the Edge",
-    "image": "3.jpg",
+    "imageSrc": "3.jpg",
+    "imageAlt": "Beyond the Edge",
     "genre": "horror",
     "rating": "6.3",
     "year": "2016",
@@ -29,7 +32,8 @@
   {
     "id": 4,
     "title": "Lost in Shadows",
-    "image": "4.jpg",
+    "imageSrc": "4.jpg",
+    "imageAlt": "Lost in Shadows",
     "genre": "action",
     "rating": "9.3",
     "year": "2016",
@@ -38,7 +42,8 @@
   {
     "id": 5,
     "title": "Echoes of Power",
-    "image": "5.jpg",
+    "imageSrc": "5.jpg",
+    "imageAlt": "Echoes of Power",
     "genre": "fantasy",
     "rating": "6.9",
     "year": "2023",
@@ -47,7 +52,8 @@
   {
     "id": 6,
     "title": "Grim Reckoning",
-    "image": "6.jpg",
+    "imageSrc": "6.jpg",
+    "imageAlt": "Grim Reckoning",
     "genre": "drama",
     "rating": "8.4",
     "year": "2022",
@@ -56,7 +62,8 @@
   {
     "id": 7,
     "title": "Fury's Flight",
-    "image": "7.jpg",
+    "imageSrc": "7.jpg",
+    "imageAlt": "Fury's Flight",
     "genre": "action",
     "rating": "9.8",
     "year": "2007",
@@ -65,7 +72,8 @@
   {
     "id": 8,
     "title": "Path of the Forgotten",
-    "image": "8.jpg",
+    "imageSrc": "8.jpg",
+    "imageAlt": "Path of the Forgotten",
     "genre": "action",
     "rating": "7.2",
     "year": "2017",
@@ -74,7 +82,8 @@
   {
     "id": 9,
     "title": "Nightmare's Threshold",
-    "image": "9.jpg",
+    "imageSrc": "9.jpg",
+    "imageAlt": "Nightmare's Threshold",
     "genre": "horror",
     "rating": "1.7",
     "year": "2023",
@@ -83,7 +92,8 @@
   {
     "id": 10,
     "title": "Eternal Hunt",
-    "image": "10.jpg",
+    "imageSrc": "10.jpg",
+    "imageAlt": "Eternal Hunt",
     "genre": "fantasy",
     "rating": "7.5",
     "year": "2021",
@@ -92,7 +102,8 @@
   {
     "id": 11,
     "title": "Legacy of the Void",
-    "image": "11.jpg",
+    "imageSrc": "11.jpg",
+    "imageAlt": "Legacy of the Void",
     "genre": "action",
     "rating": "8.5",
     "year": "2019",
@@ -101,7 +112,8 @@
   {
     "id": 12,
     "title": "Shadow's Crescent",
-    "image": "12.jpg",
+    "imageSrc": "12.jpg",
+    "imageAlt": "Shadow's Crescent",
     "genre": "horror",
     "rating": "7.5",
     "year": "2020",
@@ -110,7 +122,8 @@
   {
     "id": 13,
     "title": "Crimson Dawn",
-    "image": "13.jpg",
+    "imageSrc": "13.jpg",
+    "imageAlt": "Crimson Dawn",
     "genre": "fantasy",
     "rating": "8.4",
     "year": "2018",
@@ -119,7 +132,8 @@
   {
     "id": 14,
     "title": "Silent Kingdom",
-    "image": "14.jpg",
+    "imageSrc": "14.jpg",
+    "imageAlt": "Silent Kingdom",
     "genre": "fantasy",
     "rating": "6.5",
     "year": "2022",
@@ -128,7 +142,8 @@
   {
     "id": 15,
     "title": "Mystic Rite",
-    "image": "15.jpg",
+    "imageSrc": "15.jpg",
+    "imageAlt": "Mystic Rite",
     "genre": "fantasy",
     "rating": "9.8",
     "year": "2024",
@@ -137,7 +152,8 @@
   {
     "id": 16,
     "title": "Reign of the Lost",
-    "image": "16.jpg",
+    "imageSrc": "16.jpg",
+    "imageAlt": "Reign of the Lost",
     "genre": "horror",
     "rating": "9.1",
     "year": "2023",
@@ -146,7 +162,8 @@
   {
     "id": 17,
     "title": "Timeless Myth",
-    "image": "17.jpg",
+    "imageSrc": "17.jpg",
+    "imageAlt": "Timeless Myth",
     "genre": "drama",
     "rating": "4.0",
     "year": "2021",
@@ -155,7 +172,8 @@
   {
     "id": 18,
     "title": "Oath of the Fallen",
-    "image": "18.jpg",
+    "imageSrc": "18.jpg",
+    "imageAlt": "Oath of the Fallen",
     "genre": "fantasy",
     "rating": "6.3",
     "year": "2022",
@@ -164,7 +182,8 @@
   {
     "id": 19,
     "title": "Veil of Night",
-    "image": "19.jpg",
+    "imageSrc": "19.jpg",
+    "imageAlt": "Veil of Night",
     "genre": "drama",
     "rating": "9.5",
     "year": "2024",
@@ -173,7 +192,8 @@
   {
     "id": 20,
     "title": "Guardians of Twilight",
-    "image": "20.jpg",
+    "imageSrc": "20.jpg",
+    "imageAlt": "Guardians of Twilight",
     "genre": "horror",
     "rating": "7.4",
     "year": "2021",

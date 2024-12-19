@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import WatchlistPage from "../pages/WatchlistPage";
 import MovieGrids from "../components/MovieGrids";
 import MainLayout from "../components/MainLayout";
 import { PATHS } from "./paths";
 import MoviePage from "../pages/MoviePage";
+import * as T from "../components/Typography";
 
 const Router = () => {
   const [movies, setMovies] = useState([]);
@@ -50,14 +51,25 @@ const Router = () => {
             <Route path=":id" element={<MoviePage hasError={hasError} />} />
           </Route>
 
+          <Route path={PATHS.WATCHLIST} element={<Outlet />}>
+            <Route
+              index
+              element={
+                <WatchlistPage
+                  movies={movies}
+                  watchlist={watchlist}
+                  handleToggleWatchlist={toggleWatchlist}
+                  isLoading={isLoading}
+                />
+              }
+            />
+            <Route path=":id" element={<MoviePage hasError={hasError} />} />
+          </Route>
+          <Route path={PATHS.ERRORS.NOT_FOUND} element={<T.H1>No Page</T.H1>} />
           <Route
-            path={PATHS.WATCHLIST}
+            path="*"
             element={
-              <WatchlistPage
-                movies={movies}
-                watchlist={watchlist}
-                handleToggleWatchlist={toggleWatchlist}
-              />
+              <Navigate to={`${PATHS.ERRORS.NOT_FOUND}`} replace={true} />
             }
           />
         </Routes>

@@ -23,27 +23,27 @@ const MovieCard = ({
   return (
     <div className="movie__card">
       <img
-        src={`assets/${movie.image}`}
-        alt={movie.imageAlt}
-        title={movie.imageTitle}
+        src={`assets/${movie?.imageSrc}`}
+        alt={movie?.imageAlt}
+        title={movie?.imageAlt}
         onError={handleError}
-        onClick={() => handleClick(movie.id)}
+        onClick={() => handleClick(movie?.id)}
       />
       <div className="movie__card__info">
-        <h3 className="movie__card__title">{movie.title}</h3>
+        <h3 className="movie__card__title">{movie?.title}</h3>
         <div>
-          <span className="movie__card__genre">{movie.genre}</span>
+          <span className="movie__card__genre">{movie?.genre}</span>
           <span
-            className={`movie__card__rating ${getRatingClass(movie.rating)}`}
+            className={`movie__card__rating ${getRatingClass(movie?.rating)}`}
           >
-            {movie.rating}
+            {movie?.rating}
           </span>
         </div>
         <label className="switch">
           <input
             type="checkbox"
             checked={isWatchlisted}
-            onChange={() => handleToggleWatchlist(movie.id)}
+            onChange={() => handleToggleWatchlist(movie?.id)}
           />
           <span className="slider">
             <span className="slider__label">

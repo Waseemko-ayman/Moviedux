@@ -1,4 +1,7 @@
 export const PATHS = {
   MOVIES: "/",
-  WATCHLIST: "/watchlist"
+  WATCHLIST: "/watchlist",
+  ERRORS: {
+    NOT_FOUND: "404",
+  },
 }
