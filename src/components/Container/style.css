@@ -1,4 +1,26 @@
 .container {
-  max-width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin: 0 auto;
+}
+
+/* Small screens */
+@media (min-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}
+
+/* Medium screens */
+@media (min-width: 992px) {
+  .container {
+    width: 95%;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .container {
+    width: 1300px;
+  }
 }

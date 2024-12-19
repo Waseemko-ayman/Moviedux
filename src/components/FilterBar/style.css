@@ -1,12 +1,13 @@
 .filter__bar {
   display: flex;
   justify-content: right;
+  gap: 15px;
 }
 
 .filter__slot {
   background-color: #2c2c2c;
   padding: 5px 20px;
-  margin: 10px;
+  margin: 0 10px;
   border-radius: 50px;
 }
 
@@ -23,4 +24,30 @@
   background-color: #141414;
   cursor: pointer;
   outline: none;
+}
+
+@media (max-width: 496px) {
+  .filter__bar {
+    justify-content: center;
+  }
+  .filter__slot {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 376px) {
+  .filter__bar {
+    align-items: center;
+    flex-direction: column;
+  }
+  .filter__slot {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

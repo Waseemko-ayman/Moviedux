@@ -20,7 +20,7 @@
 }
 
 .movie__card__info {
-  padding: 16px 16px 5px;
+  padding: 15px 15px 5px 15px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -38,7 +38,6 @@
   background: #141414;
   padding: 3px 10px;
   margin: 0 auto;
-  width: 50px;
   border-radius: 50px;
 }
 
@@ -100,18 +99,30 @@
   border-radius: 50%;
 }
 
-.movie__card .slider-label {
+.movie__card .slider__label {
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
   width: 100%;
   line-height: 24px;
   transition: opacity 0.4s ease;
 }
 
 .movie__card input:checked + .slider:before {
-  transform: translateX(155px); /* Move the circle to the other side */
+  transform: translateX(156px); /* Move the circle to the other side */
 }
 
 .movie__card input:checked + .slider {
   background-color: #ffa100;
+}
+
+@media (max-width: 495px) {
+  .movie__card .switch {
+    width: 170px;
+  }
+  .movie__card .slider__label {
+    font-size: 13px;
+  }
+  .movie__card input:checked + .slider:before {
+    transform: translateX(146px); /* Move the circle to the other side */
+  }
 }

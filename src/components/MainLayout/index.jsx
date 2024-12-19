@@ -6,9 +6,11 @@ import Container from "../Container/inedx";
 const MainLayout = ({ children }) => {
   return (
     <>
-      <Header />
-      <Container>{children}</Container>
-      <Footer />
+      <Container>
+        <Header />
+        {children}
+        <Footer />
+      </Container>
     </>
   );
 };

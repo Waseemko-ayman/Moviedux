@@ -56,11 +56,35 @@
 }
 
 .movie__info h2 {
+  width: fit-content;
   font-size: 2.5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 15px;
   letter-spacing: 1px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.movie__info h2::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #ffa100;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  animation: goLine 2s linear infinite alternate;
+}
+
+@keyframes goLine {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .movie__info p {
