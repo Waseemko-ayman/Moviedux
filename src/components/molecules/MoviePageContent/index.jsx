@@ -1,5 +1,5 @@
 import React from "react";
-import * as T from "../Typography";
+import * as T from "../../Typography";
 import "./style.css";
 import LinkItem from "../LinkItem";
 

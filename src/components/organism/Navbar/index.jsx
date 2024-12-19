@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import LinkItem from "../LinkItem";
+import LinkItem from "../../atoms/LinkItem";
 
 const Navbar = () => {
   return (

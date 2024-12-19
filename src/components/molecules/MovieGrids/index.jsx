@@ -4,7 +4,7 @@ import MovieCard from "../MovieCard";
 import FilterBar from "../FilterBar";
 import Loading from "../Loading";
 import { Navigate } from "react-router-dom";
-import ErrorFetching from "../ErrorFetching";
+import ErrorFetching from "../../atoms/ErrorFetching";
 import MoviesGridDiv from "../MoviesGridDiv";
 
 const MovieGrids = ({

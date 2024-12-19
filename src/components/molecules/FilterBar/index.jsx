@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { GENRE_OPTIONS, RATING_OPTIONS } from "../../mock/selectItems";
+import { GENRE_OPTIONS, RATING_OPTIONS } from "../../../mock/selectItems";
 
 const FilterBar = ({ handleGenre, handleRating, genre, rating }) => {
   return (
