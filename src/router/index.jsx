@@ -5,6 +5,7 @@ import MovieGrids from "../components/molecules/MovieGrids";
 import { PATHS } from "./paths";
 import MoviePage from "../pages/MoviePage";
 import * as T from "../components/organism/Typography";
+import axios from "axios";
 
 const Router = () => {
   const [movies, setMovies] = useState([]);
@@ -21,15 +22,20 @@ const Router = () => {
   };
 
   useEffect(() => {
-    fetch("movies.json")
-      .then((response) => response.json())
-      .then((data) => setMovies(data), setIsLoading(false))
-      .catch((error) => {
+    const fetchMovies = async () => {
+      try {
+        const res = await axios.get("movies.json");
+        setMovies(res.data);
+        setIsLoading(false);
+      } catch (error) {
         console.error("Error fetching movies:", error);
         setHasError(true);
         setIsLoading(false);
-      });
+      }
+    };
+    fetchMovies();
   }, []);
+
   return (
     <Routes>
       <Route path={PATHS.MOVIES} element={<Outlet />}>

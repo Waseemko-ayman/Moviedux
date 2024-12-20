@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../../components/molecules/Loading";
 import ErrorFetching from "../../components/atoms/ErrorFetching";
 import MoviePageContent from "../../components/molecules/MoviePageContent";
+import axios from "axios";
 
 const MoviePage = ({ hasError }) => {
   const { id } = useParams();
@@ -10,18 +11,21 @@ const MoviePage = ({ hasError }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("movies.json")
-      .then((response) => response.json())
-      .then((data) => {
-        const selectedMovie = data.find((movie) => movie.id === +id);
+    const fetchMovie = async () => {
+      try {
+        const res = await axios.get("movies.json");
+        const selectedMovie = res.data.find((movie) => movie.id === +id);
         setMovie(selectedMovie || null);
-        setIsLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching movie:", error);
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    fetchMovie();
   }, [id]);
+
   return (
     <div>
       {hasError ? (

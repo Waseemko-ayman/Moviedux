@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import * as T from "../../molecules/Typography";
+import * as T from "../../organism/Typography";
 
 const ErrorFetching = ({ errorText }) => {
   return (
