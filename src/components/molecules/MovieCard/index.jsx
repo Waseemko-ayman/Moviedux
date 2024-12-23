@@ -4,7 +4,7 @@ import "./style.css";
 const MovieCard = ({
   isWatchlisted,
   movie,
-  handleToggleWatchlist,
+  toggleWatchlist,
   handleClick,
 }) => {
   const handleError = (e) => {
@@ -43,7 +43,7 @@ const MovieCard = ({
           <input
             type="checkbox"
             checked={isWatchlisted}
-            onChange={() => handleToggleWatchlist(movie?.id)}
+            onChange={() => toggleWatchlist(movie?.id)}
           />
           <span className="slider">
             <span className="slider__label">

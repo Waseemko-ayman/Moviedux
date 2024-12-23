@@ -1,11 +1,18 @@
+import { useState } from "react";
 import MainLayout from "./components/organism/MainLayout";
-import Movies from "./pages/movies";
+import { RoleContext } from "./context/UserRole";
+// import Movies from "./pages/movies";
+import { ROLE } from "./router/role";
+import Router from "./router";
 
 function App() {
+  // const [role, setRole] = useState(ROLE.ADMIN)
   return (
-    <MainLayout>
-      <Movies />
-    </MainLayout>
+    // <RoleContext.Provider value={{ role }}>
+      <MainLayout>
+        <Router />
+      </MainLayout>
+    // </RoleContext.Provider>
   );
 }
 

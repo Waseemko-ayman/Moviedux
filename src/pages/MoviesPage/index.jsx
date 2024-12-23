@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./style.css";
-import MovieCard from "../MovieCard";
-import FilterBar from "../FilterBar";
-import Loading from "../Loading";
+import MovieCard from "../../components/molecules/MovieCard";
+import FilterBar from "../../components/molecules/FilterBar";
+import Loading from "../../components/molecules/Loading";
 import { Navigate } from "react-router-dom";
-import ErrorFetching from "../../atoms/ErrorFetching";
-import MoviesGridDiv from "../MoviesGridDiv";
+import ErrorFetching from "../../components/atoms/ErrorFetching";
+import MoviesGridDiv from "../../components/molecules/MoviesGridDiv";
+import { MovieContext } from "../../context/MovieContext";
 
-const MovieGrids = ({
-  movies,
-  watchlist,
-  handleToggleWatchlist,
-  isLoading,
-  hasError,
-}) => {
+const MoviesPage = () => {
+  const { movies, watchlist, toggleWatchlist, isLoading, hasError } =
+    useContext(MovieContext);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [movieId, setMovieId] = useState(null);
 
@@ -94,7 +92,7 @@ const MovieGrids = ({
                 <MovieCard
                   key={movie.id}
                   movie={movie}
-                  handleToggleWatchlist={handleToggleWatchlist}
+                  toggleWatchlist={toggleWatchlist}
                   isWatchlisted={watchlist.includes(movie.id)}
                   handleClick={handleClick}
                 />
@@ -109,4 +107,4 @@ const MovieGrids = ({
   );
 };
 
-export default MovieGrids;
+export default MoviesPage;

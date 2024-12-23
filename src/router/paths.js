@@ -1,7 +1,13 @@
 export const PATHS = {
-  MOVIES: "/",
-  WATCHLIST: "/watchlist",
+  MOVIES: {
+    ROOT: "/",
+    VIEW: "/:id"
+  },
+  WATCHLIST: {
+    ROOT: "/watchlist",
+    VIEW: "/watchlist/:id"
+  },
   ERRORS: {
-    NOT_FOUND: "404",
+    NOT_FOUND: "/404",
   },
 }

@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./style.css";
 import * as T from "../../components/organism/Typography";
 import MovieCard from "../../components/molecules/MovieCard";
 import MoviesGridDiv from "../../components/molecules/MoviesGridDiv";
 import Loading from "../../components/molecules/Loading";
 import { Navigate } from "react-router-dom";
+import { MovieContext } from "../../context/MovieContext";
 
-const WatchlistPage = ({
-  movies,
-  watchlist,
-  handleToggleWatchlist,
-  isLoading,
-}) => {
+const WatchlistPage = () => {
+  const { movies, watchlist, toggleWatchlist, isLoading } =
+    useContext(MovieContext);
+
   const [movieId, setMovieId] = useState(null);
 
   const handleClick = (id) => {
@@ -29,7 +28,7 @@ const WatchlistPage = ({
               <MovieCard
                 key={id}
                 movie={movie}
-                handleToggleWatchlist={handleToggleWatchlist}
+                toggleWatchlist={toggleWatchlist}
                 isWatchlisted={true}
                 handleClick={handleClick}
               />
