@@ -1,16 +1,17 @@
 import React from "react";
 import "./style.css";
 import LinkItem from "../../atoms/LinkItem";
+import { PATHS } from "../../../router/paths";
 
 const Navbar = () => {
   return (
     <nav>
       <ul>
         <li>
-          <LinkItem linkPath="/" linkText="Home" />
+          <LinkItem linkPath={PATHS.MOVIES.ROOT} linkText="Home" />
         </li>
         <li>
-          <LinkItem linkPath="/watchlist" linkText="Watchlist" />
+          <LinkItem linkPath={PATHS.WATCHLIST} linkText="Watchlist" />
         </li>
       </ul>
     </nav>

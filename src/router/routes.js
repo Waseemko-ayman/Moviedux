@@ -25,18 +25,8 @@ export const routes = [
     ]
   },
   {
-    path: PATHS.WATCHLIST.ROOT,
-    element: <Outlet />,
-    children: [
-      {
-        index: true,
-        element: <WatchlistPage />
-      },
-      {
-        path: PATHS.WATCHLIST.VIEW,
-        element: <MoviePage />
-      }
-    ]
+    path: PATHS.WATCHLIST,
+    element: <WatchlistPage />,
   },
   {
     path: PATHS.ERRORS.NOT_FOUND,

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { MovieContext } from "../../../context/MovieContext";
+import { API_URL } from "../../../config/api";
 
 const MovieProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
@@ -19,7 +20,7 @@ const MovieProvider = ({ children }) => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await axios.get("movies.json");
+        const res = await axios.get(`${API_URL}/movies`);
         setMovies(res.data);
         setIsLoading(false);
       } catch (error) {

@@ -1,20 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./style.css";
 import * as T from "../../components/organism/Typography";
 import MovieCard from "../../components/molecules/MovieCard";
 import MoviesGridDiv from "../../components/molecules/MoviesGridDiv";
 import Loading from "../../components/molecules/Loading";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MovieContext } from "../../context/MovieContext";
+import { PATHS } from "../../router/paths";
 
 const WatchlistPage = () => {
   const { movies, watchlist, toggleWatchlist, isLoading } =
     useContext(MovieContext);
 
-  const [movieId, setMovieId] = useState(null);
+  const navigate = useNavigate();
 
   const handleClick = (id) => {
-    setMovieId(id);
+    navigate(PATHS.MOVIES.VIEW.replace(":id", id));
   };
 
   return (
@@ -37,7 +38,6 @@ const WatchlistPage = () => {
         </MoviesGridDiv>
       )}
       {isLoading && <Loading />}
-      {movieId && <Navigate to={`/${movieId}`} />}
     </div>
   );
 };

@@ -3,17 +3,18 @@ import "./style.css";
 import MovieCard from "../../components/molecules/MovieCard";
 import FilterBar from "../../components/molecules/FilterBar";
 import Loading from "../../components/molecules/Loading";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import ErrorFetching from "../../components/atoms/ErrorFetching";
 import MoviesGridDiv from "../../components/molecules/MoviesGridDiv";
 import { MovieContext } from "../../context/MovieContext";
+import { PATHS } from "../../router/paths";
 
 const MoviesPage = () => {
   const { movies, watchlist, toggleWatchlist, isLoading, hasError } =
     useContext(MovieContext);
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [movieId, setMovieId] = useState(null);
+  const navigate = useNavigate();
 
   const [genre, setGenre] = useState("All Genres");
   const [rating, setRating] = useState("All");
@@ -64,7 +65,7 @@ const MoviesPage = () => {
   );
 
   const handleClick = (id) => {
-    setMovieId(id);
+    navigate(PATHS.MOVIES.VIEW.replace(":id", id));
   };
 
   return (
@@ -100,7 +101,6 @@ const MoviesPage = () => {
             </MoviesGridDiv>
           )}
           {isLoading && <Loading />}
-          {movieId && <Navigate to={`${movieId}`} />}
         </>
       )}
     </>

@@ -2,6 +2,7 @@ import React from "react";
 import * as T from "../../organism/Typography";
 import "./style.css";
 import LinkItem from "../../atoms/LinkItem";
+import { PATHS } from "../../../router/paths";
 
 const MoviePageContent = ({ movie }) => {
   return (
@@ -25,7 +26,7 @@ const MoviePageContent = ({ movie }) => {
               <span>Genre: {movie?.genre}</span>
               <span>Year: {movie?.year}</span>
             </div>
-            <LinkItem linkPath="/" linkText="Back to Movies" margin />
+            <LinkItem linkPath={PATHS.MOVIES.ROOT} linkText="Back to Movies" margin />
           </div>
           <div className="movie__poster__wrapper">
             <img
