@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.css";
+import Button from "../../atoms/Button";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "../../../router/paths";
+import TitledImage from "../Image";
+import { RoleContext } from "../../../context/UserRole";
+import { ROLE } from "../../../router/role";
 
 const MovieCard = ({
   isWatchlisted,
   movie,
   toggleWatchlist,
   handleClick,
+  handleDelete,
 }) => {
+  const { role } = useContext(RoleContext);
+  const navigate = useNavigate();
+
+  const handleEdit = (id) => {
+    navigate(PATHS.MOVIES.EDIT.replace(":id", id));
+  };
+
   const handleError = (e) => {
     e.target.src = "assets/default.jpg";
   };
@@ -20,24 +34,28 @@ const MovieCard = ({
       return "rating-bad";
     }
   };
+
   return (
     <div className="movie__card">
-      <img
+      <TitledImage
         src={`assets/${movie?.imageSrc}`}
         alt={movie?.imageAlt}
         title={movie?.imageAlt}
         onError={handleError}
         onClick={() => handleClick(movie?.id)}
+        loading="lazy"
       />
       <div className="movie__card__info">
-        <h3 className="movie__card__title">{movie?.title}</h3>
-        <div>
-          <span className="movie__card__genre">{movie?.genre}</span>
-          <span
-            className={`movie__card__rating ${getRatingClass(movie?.rating)}`}
-          >
-            {movie?.rating}
-          </span>
+        <div className="header">
+          <h3 className="movie__card__title">{movie?.title}</h3>
+          <div>
+            <span className="movie__card__genre">{movie?.genre}</span>
+            <span
+              className={`movie__card__rating ${getRatingClass(movie?.rating)}`}
+            >
+              {movie?.rating}
+            </span>
+          </div>
         </div>
         <label className="switch">
           <input
@@ -51,6 +69,15 @@ const MovieCard = ({
             </span>
           </span>
         </label>
+        {role === ROLE.ADMIN && (
+          <div className="movie__settings">
+            <Button textBtn="Edit" handleClick={() => handleEdit(movie.id)} />
+            <Button
+              textBtn="Delete"
+              handleClick={() => handleDelete(movie.id)}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

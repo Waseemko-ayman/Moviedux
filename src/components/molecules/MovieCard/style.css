@@ -1,4 +1,5 @@
 .movie__card {
+  text-align: center;
   background-color: #272727;
   border-radius: 8px;
   overflow: hidden;
@@ -12,8 +13,6 @@
 
 .movie__card img {
   width: 100%;
-  height: auto;
-  display: block;
   object-fit: contain;
   object-position: center;
   cursor: pointer;
@@ -24,7 +23,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  text-align: center;
 }
 
 .movie__card__title {
@@ -32,18 +30,21 @@
   font-weight: bold;
 }
 
-.movie__card__rating {
-  font-size: 0.9rem;
-  font-weight: bold;
-  background: #141414;
-  padding: 3px 10px;
-  margin: 0 auto;
-  border-radius: 50px;
+.movie__card__title + div {
+  margin-top: 5px;
 }
 
 .movie__card__genre {
   font-size: 0.9rem;
   margin-right: 10px;
+}
+
+.movie__card__rating {
+  font-size: 0.9rem;
+  font-weight: bold;
+  background: #141414;
+  padding: 3px 10px;
+  border-radius: 50px;
 }
 
 .rating-good {
@@ -58,8 +59,23 @@
   color: rgb(255, 123, 123);
 }
 
+.movie__settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 12px;
+}
+
+.movie__card__info button {
+  width: 180px;
+  padding: 5px 10px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
 .movie__card .switch {
-  margin: 20px auto;
+  margin: 10px auto;
   position: relative;
   display: inline-block;
   width: 180px; /* Width large enough to fit the label text */

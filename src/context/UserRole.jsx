@@ -1,6 +1,3 @@
-// const { createContext } = require("react");
+const { createContext } = require("react");
 
-// export const RoleContext = createContext({
-//   username: "Gest",
-//   isAdmin: "false",
-// });
+export const RoleContext = createContext(null);

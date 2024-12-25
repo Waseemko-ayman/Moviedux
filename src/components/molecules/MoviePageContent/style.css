@@ -31,7 +31,6 @@
   letter-spacing: 2px;
   color: #ffa100;
   text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
-  margin-bottom: 10px;
 }
 
 .movie__tagline {
@@ -41,18 +40,18 @@
 }
 
 .movie__content {
-  padding: 50px 20px;
+  padding: 0 20px;
+  margin-top: 50px;
 }
 
 .movie__details {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .movie__info {
-  max-width: 55%;
-  padding-right: 40px;
+  max-width: 50%;
 }
 
 .movie__info h2 {
@@ -63,28 +62,6 @@
   margin-bottom: 15px;
   letter-spacing: 1px;
   padding-bottom: 5px;
-  position: relative;
-}
-
-.movie__info h2::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #ffa100;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-  animation: goLine 2s linear infinite alternate;
-}
-
-@keyframes goLine {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
 }
 
 .movie__info p {
@@ -125,30 +102,80 @@
   filter: brightness(1.1);
 }
 
-@media (max-width: 768px) {
+.movie__page .buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.movie__page .buttons :is(a, button) {
+  max-width: 100%;
+  width: 150px;
+}
+
+@media (max-width: 321px) {
+  .movie__info h2 {
+    font-size: 1.5rem !important;
+  }
+  .movie__info p {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 426px) {
+  .movie__title {
+    font-size: 1.5rem;
+  }
+  .movie__info h2 {
+    font-size: 2rem;
+    margin: 0 auto 15px;
+  }
+  .movie__info p {
+    font-size: 1rem;
+  }
+  :is(.movie__rating, .buttons) {
+    text-align: center;
+  }
+  .buttons {
+    justify-content: center;
+  }
+  .movie__page .buttons :is(a, button) {
+    width: 100%;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
   .movie__header {
     height: 50vh;
   }
-
   .movie__title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
-
-  .movie__info {
-    max-width: 100%;
-    padding-right: 0;
-  }
-
   .movie__rating {
     font-size: 1rem;
   }
-
   .movie__poster-wrapper {
     max-width: 100%;
     margin-top: 20px;
   }
-
   .movie__poster {
     width: 80%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+  .movie__title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .movie__info {
+    max-width: 100%;
+  }
+  .movie__poster__wrapper {
+    display: none;
   }
 }

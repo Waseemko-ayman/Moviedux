@@ -1,7 +1,9 @@
 export const PATHS = {
   MOVIES: {
     ROOT: "/movies",
-    VIEW: "/movies/:id"
+    VIEW: "/movies/:id",
+    EDIT: "/movies/:id/edit",
+    CREATE: "/movies/create"
   },
   WATCHLIST: "/watchlist",
   ERRORS: {

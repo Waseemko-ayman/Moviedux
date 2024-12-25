@@ -3,21 +3,25 @@ import "./style.css";
 import MovieCard from "../../components/molecules/MovieCard";
 import FilterBar from "../../components/molecules/FilterBar";
 import Loading from "../../components/molecules/Loading";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ErrorFetching from "../../components/atoms/ErrorFetching";
 import MoviesGridDiv from "../../components/molecules/MoviesGridDiv";
 import { MovieContext } from "../../context/MovieContext";
 import { PATHS } from "../../router/paths";
+import axios from "axios";
+import { API_URL } from "../../config/api";
+import Input from "../../components/atoms/Input";
 
 const MoviesPage = () => {
-  const { movies, watchlist, toggleWatchlist, isLoading, hasError } =
+  const { movies, setMovies, watchlist, toggleWatchlist, isLoading, hasError } =
     useContext(MovieContext);
 
-  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
-
+  const [searchTerm, setSearchTerm] = useState("");
   const [genre, setGenre] = useState("All Genres");
   const [rating, setRating] = useState("All");
+  const [, setIsLoading] = useState(false);
+  const [, setError] = useState(null);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -68,14 +72,27 @@ const MoviesPage = () => {
     navigate(PATHS.MOVIES.VIEW.replace(":id", id));
   };
 
+  const handleDelete = async (id) => {
+    setIsLoading(true);
+    try {
+      await axios.delete(`${API_URL}/movies/${id}`);
+      // To Reduce The Requests To Server
+      setMovies(movies.filter((movie) => movie.id !== id));
+      setIsLoading(false);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <>
-      <input
-        type="text"
-        className="search__input"
+    <div className="movies__page">
+      <Input
+        inputType="text"
         placeholder="Search movies..."
-        value={searchTerm}
-        onChange={handleSearchChange}
+        inputValue={searchTerm}
+        handleChange={handleSearchChange}
       />
       <FilterBar
         genre={genre}
@@ -96,6 +113,7 @@ const MoviesPage = () => {
                   toggleWatchlist={toggleWatchlist}
                   isWatchlisted={watchlist.includes(movie.id)}
                   handleClick={handleClick}
+                  handleDelete={handleDelete}
                 />
               ))}
             </MoviesGridDiv>
@@ -103,7 +121,7 @@ const MoviesPage = () => {
           {isLoading && <Loading />}
         </>
       )}
-    </>
+    </div>
   );
 };
 

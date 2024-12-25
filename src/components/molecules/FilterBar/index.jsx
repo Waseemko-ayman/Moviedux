@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.css";
 import { GENRE_OPTIONS, RATING_OPTIONS } from "../../../mock/selectItems";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "../../../router/paths";
+import Button from "../../atoms/Button";
+import { RoleContext } from "../../../context/UserRole";
+import { ROLE } from "../../../router/role";
 
 const FilterBar = ({ handleGenre, handleRating, genre, rating }) => {
+  const { role } = useContext(RoleContext);
+  const navigate = useNavigate();
   return (
     <div className="filter__bar">
       <div className="filter__slot">
@@ -29,6 +36,12 @@ const FilterBar = ({ handleGenre, handleRating, genre, rating }) => {
           ))}
         </select>
       </div>
+      {role === ROLE.ADMIN && (
+        <Button
+          textBtn="Create Movie"
+          handleClick={() => navigate(PATHS.MOVIES.CREATE)}
+        />
+      )}
     </div>
   );
 };

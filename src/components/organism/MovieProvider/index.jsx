@@ -34,7 +34,7 @@ const MovieProvider = ({ children }) => {
 
   return (
     <MovieContext.Provider
-      value={{ movies, isLoading, watchlist, toggleWatchlist, hasError }}
+      value={{ movies, setMovies, isLoading, watchlist, toggleWatchlist, hasError }}
     >
       {children}
     </MovieContext.Provider>

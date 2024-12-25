@@ -1,0 +1,29 @@
+:is(.input, textarea) {
+  max-width: 100%;
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  color: #fff;
+  background-color: #272727;
+  transition: all 0.3s;
+}
+
+.input {
+  border-radius: 100px;
+}
+
+:is(.input, textarea):focus {
+  border-color: #ffa100;
+}
+
+@media (max-width: 496px) {
+  .input {
+    border-radius: 8px;
+  }
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}

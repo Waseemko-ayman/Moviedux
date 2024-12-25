@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const LinkItem = ({ linkText, linkPath, margin }) => {
   return (
-    <Link to={linkPath} className={margin ? "margin": ""}>
+    <Link to={linkPath} className={margin ? "margin" : ""}>
       {linkText}
     </Link>
   );
