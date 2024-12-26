@@ -1,13 +1,11 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { MovieContext } from "../../../context/MovieContext";
 import { API_URL } from "../../../config/api";
+import useAPI from "../../../Hooks/useAPI";
 
 const MovieProvider = ({ children }) => {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [watchlist, setWatchlist] = useState([]);
-  const [hasError, setHasError] = useState(false);
+  const { get, del, movies, isLoading, error } = useAPI(`${API_URL}/movies`);
 
   const toggleWatchlist = (movieId) => {
     setWatchlist((prevState) =>
@@ -18,23 +16,19 @@ const MovieProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const res = await axios.get(`${API_URL}/movies`);
-        setMovies(res.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-        setHasError(true);
-        setIsLoading(false);
-      }
-    };
-    fetchMovies();
-  }, []);
+    get();
+  }, [get]);
 
   return (
     <MovieContext.Provider
-      value={{ movies, setMovies, isLoading, watchlist, toggleWatchlist, hasError }}
+      value={{
+        movies,
+        isLoading,
+        watchlist,
+        toggleWatchlist,
+        error,
+        del,
+      }}
     >
       {children}
     </MovieContext.Provider>

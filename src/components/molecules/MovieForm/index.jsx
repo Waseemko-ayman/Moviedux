@@ -11,7 +11,13 @@ const inputsArray = [
     type: "text",
   },
   {
-    id: "alt",
+    id: "imageSrc",
+    name: "imageSrc",
+    label: "Image Source",
+    type: "text",
+  },
+  {
+    id: "imageAlt",
     name: "alt",
     label: "Image Alt",
     type: "text",
@@ -45,24 +51,29 @@ const inputsArray = [
 const MovieForm = ({ movie, handleSubmit, isLoading }) => {
   const [formData, setFormData] = useState({
     title: "",
+    imageSrc: "",
     imageAlt: "",
     genre: "",
     rating: "",
     year: "",
     description: "",
   });
+
+  const [imagePreview, setImagePreview] = useState(""); // للحفاظ على الصورة المعروضة
   const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   useEffect(() => {
     if (movie && isFirstLoad) {
       setFormData({
         title: movie.title,
-        imageAlt: movie.imageAlt,
+        imageSrc: movie.imageSrc || "",
+        imageAlt: movie.imageAlt || "",
         genre: movie.genre,
         rating: movie.rating,
         year: movie.year,
         description: movie.description,
       });
+      setImagePreview(movie.imageSrc || ""); // عرض الصورة الحالية
       setIsFirstLoad(false);
     }
   }, [movie, isFirstLoad]);
@@ -73,6 +84,19 @@ const MovieForm = ({ movie, handleSubmit, isLoading }) => {
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+
+      const filePath = URL.createObjectURL(file);
+      setFormData((prevData) => ({
+        ...prevData,
+        imageSrc: filePath,
+      }));
+    }
   };
 
   const handleOnSubmit = (e) => {
@@ -93,6 +117,29 @@ const MovieForm = ({ movie, handleSubmit, isLoading }) => {
               handleChange={handleChangeInput}
               placeholder={`write movie ${input.name}`}
             />
+          ) : input.id === "imageSrc" ? (
+            <>
+              <Input
+                inputType="text"
+                inputId={input.id}
+                inputName={input.name}
+                inputValue={formData[input.id]}
+                handleChange={handleChangeInput}
+                placeholder="Enter image URL"
+              />
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt={formData.imageAlt || "Movie Alt"}
+                  width="100"
+                />
+              )}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </>
           ) : (
             <Input
               inputType={input.type}

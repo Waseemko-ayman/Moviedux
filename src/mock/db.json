@@ -1,24 +1,24 @@
 {
   "movies": [
     {
-      "id": "1",
       "title": "Dark Storm",
       "imageSrc": "1.jpg",
       "imageAlt": "Whisper of Fate",
       "genre": "drama",
       "rating": "8.3",
       "year": "2006",
-      "description": "Is a 2006 science fiction disaster film directed by John Terlesky, featuring Stephen Baldwin as Dr. Daniel Gray. The narrative centers on a group of scientists who develop a device, code-named Eruptor, capable of manipulating dark matter to create controlled weather phenomena. However, the experiment goes awry, leading to catastrophic weather events that threaten global stability. The team races against time to prevent the device from causing irreversible damage. "
+      "description": "Is a 2006 science fiction disaster film directed by John Terlesky, featuring Stephen Baldwin as Dr. Daniel Gray. The narrative centers on a group of scientists who develop a device, code-named Eruptor, capable of manipulating dark matter to create controlled weather phenomena. However, the experiment goes awry, leading to catastrophic weather events that threaten global stability. The team races against time to prevent the device from causing irreversible damage. ",
+      "id": "1"
     },
     {
-      "id": "2",
       "title": "Whisper of Fate",
       "imageSrc": "2.jpg",
       "imageAlt": "Whisper of Fate",
       "genre": "fantasy",
       "rating": "7.7",
       "year": "2023",
-      "description": "Is a captivating 2023 fantasy-thriller film that explores the delicate balance between fate and free will. The story follows a young woman who discovers a mysterious ability to hear the whispers of the future, guiding her decisions. As she unravels the secrets of her newfound power, she becomes entangled in a dangerous web of fate, where every choice could lead to a life-altering consequence. The film explores themes of destiny, self-discovery, and the consequences of one's actions, all set against a beautifully dark and atmospheric backdrop."
+      "description": "Is a captivating 2023 fantasy-thriller film that explores the delicate balance between fate and free will. The story follows a young woman who discovers a mysterious ability to hear the whispers of the future, guiding her decisions. As she unravels the secrets of her newfound power, she becomes entangled in a dangerous web of fate, where every choice could lead to a life-altering consequence. The film explores themes of destiny, self-discovery, and the consequences of one's actions, all set against a beautifully dark and atmospheric backdrop.",
+      "id": "2"
     },
     {
       "id": "3",

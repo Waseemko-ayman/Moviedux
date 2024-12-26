@@ -8,10 +8,14 @@ import EditMoviePage from "../pages/EditMoviePage"
 import CreateMoviePage from "../pages/CreateMoviePage"
 
 export const adminPages = (role) => [
-  [...routes]
+  ...routes
 ]
 
 export const routes = [
+  {
+    path: "/",
+    element: <Navigate to={PATHS.MOVIES.ROOT} replace={true} />
+  },
   {
     path: PATHS.MOVIES.ROOT,
     element: <Outlet />,

@@ -8,20 +8,16 @@ import ErrorFetching from "../../components/atoms/ErrorFetching";
 import MoviesGridDiv from "../../components/molecules/MoviesGridDiv";
 import { MovieContext } from "../../context/MovieContext";
 import { PATHS } from "../../router/paths";
-import axios from "axios";
-import { API_URL } from "../../config/api";
 import Input from "../../components/atoms/Input";
 
 const MoviesPage = () => {
-  const { movies, setMovies, watchlist, toggleWatchlist, isLoading, hasError } =
+  const { movies, watchlist, toggleWatchlist, isLoading, error, del } =
     useContext(MovieContext);
 
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [genre, setGenre] = useState("All Genres");
   const [rating, setRating] = useState("All");
-  const [, setIsLoading] = useState(false);
-  const [, setError] = useState(null);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -73,17 +69,7 @@ const MoviesPage = () => {
   };
 
   const handleDelete = async (id) => {
-    setIsLoading(true);
-    try {
-      await axios.delete(`${API_URL}/movies/${id}`);
-      // To Reduce The Requests To Server
-      setMovies(movies.filter((movie) => movie.id !== id));
-      setIsLoading(false);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
-    }
+    del(id);
   };
 
   return (
@@ -100,7 +86,7 @@ const MoviesPage = () => {
         rating={rating}
         handleRating={handleRatingChange}
       />
-      {hasError ? (
+      {error ? (
         <ErrorFetching errorText="Error fetching movies !" />
       ) : (
         <>
