@@ -1,12 +1,8 @@
-.movie__form {
-  margin-top: 25px;
-}
-
-.movie__form div {
+.login {
   margin-bottom: 15px;
 }
 
-.movie__form label {
+.login label {
   display: block;
   font-size: 17px;
   margin-bottom: 10px;

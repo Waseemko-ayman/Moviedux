@@ -11,14 +11,14 @@
       "id": "1"
     },
     {
+      "id": "2",
       "title": "Whisper of Fate",
       "imageSrc": "2.jpg",
       "imageAlt": "Whisper of Fate",
       "genre": "fantasy",
       "rating": "7.7",
       "year": "2023",
-      "description": "Is a captivating 2023 fantasy-thriller film that explores the delicate balance between fate and free will. The story follows a young woman who discovers a mysterious ability to hear the whispers of the future, guiding her decisions. As she unravels the secrets of her newfound power, she becomes entangled in a dangerous web of fate, where every choice could lead to a life-altering consequence. The film explores themes of destiny, self-discovery, and the consequences of one's actions, all set against a beautifully dark and atmospheric backdrop.",
-      "id": "2"
+      "description": "Is a captivating 2023 fantasy-thriller film that explores the delicate balance between fate and free will. The story follows a young woman who discovers a mysterious ability to hear the whispers of the future, guiding her decisions. As she unravels the secrets of her newfound power, she becomes entangled in a dangerous web of fate, where every choice could lead to a life-altering consequence. The film explores themes of destiny, self-discovery, and the consequences of one's actions, all set against a beautifully dark and atmospheric backdrop."
     },
     {
       "id": "3",

@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
 import * as T from "../../organism/Typography";
 import "./style.css";
 import LinkItem from "../../atoms/LinkItem";
 import { PATHS } from "../../../router/paths";
 import Button from "../../atoms/Button";
 import TitledImage from "../Image";
-import { RoleContext } from "../../../context/UserRole";
-import { ROLE } from "../../../router/role";
+import { useAuthContext } from "../../../context/AuthContext";
+import { ROLES } from "../../../router/role";
 
 const MoviePageContent = ({ movie, handleEdit }) => {
-  const { role } = useContext(RoleContext);
+  const { role } = useAuthContext();
+
   return (
     <div className="movie__page">
       <div
@@ -34,10 +34,10 @@ const MoviePageContent = ({ movie, handleEdit }) => {
             <div className="buttons">
               <LinkItem
                 linkPath={PATHS.MOVIES.ROOT}
-                linkText="Back to Movies"
+                children="Back to Movies"
               />
-              {role === ROLE.ADMIN && (
-                <Button textBtn="Edit Movie" handleClick={handleEdit} />
+              {role === ROLES.ADMIN && (
+                <Button handleClick={handleEdit}>Edit Movie</Button>
               )}
             </div>
           </div>

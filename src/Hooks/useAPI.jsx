@@ -1,105 +1,172 @@
 import axios from "axios";
-import { useCallback, useState } from "react";
+import { useReducer } from "react";
+
+const initialState = {
+  movies: [],
+  movie: null,
+  isLoading: false,
+  error: null,
+  message: "",
+};
+
+const API_ACTIONS = {
+  SET_LOADING: "SET_LOADING",
+  GET: "GET",
+  GET_SINGLE: "GET_SINGLE",
+  POST: "POST",
+  PUT: "PUT",
+  DEL: "DEL",
+  ERROR: "ERROR",
+};
+
+const reduce = (state, action) => {
+  switch (action.type) {
+    case API_ACTIONS.SET_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case API_ACTIONS.GET:
+      return {
+        ...state,
+        isLoading: false,
+        movies: action.payload,
+      };
+    case API_ACTIONS.GET_SINGLE:
+      return {
+        ...state,
+        isLoading: false,
+        movie: action.payload,
+      };
+    case API_ACTIONS.POST:
+      return {
+        ...state,
+        isLoading: false,
+        movies: [...state.movies, action.payload],
+        message: "Success!",
+      };
+    case API_ACTIONS.PUT:
+      return {
+        ...state,
+        isLoading: false,
+        movies: state.movies.map((item) =>
+          item.id === action.payload.id ? action.payload.movies : item
+        ),
+        message: "Success!",
+      };
+    case API_ACTIONS.DEL:
+      return {
+        ...state,
+        isLoading: false,
+        movies: state.movies.filter((item) => item.id !== action.payload),
+        message: "Success!",
+      };
+    case API_ACTIONS.ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 const useAPI = (url, config) => {
-  const [movies, setMovies] = useState([]);
-  const [movie, setMovie] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [message, setMessage] = useState("");
+  const [state, dispatch] = useReducer(reduce, initialState);
 
-  const get = useCallback(
-    async (getConfig) => {
-      setIsLoading(true);
-      try {
-        const res = await axios.get(url, { ...config, ...getConfig });
-        setMovies(res?.data);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-        setError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [url, config]
-  );
+  const get = async (getConfig) => {
+    try {
+      dispatch({
+        type: API_ACTIONS.SET_LOADING,
+      });
+      const res = await axios.get(url, { ...config, ...getConfig });
+      dispatch({ type: API_ACTIONS.GET, payload: res?.data });
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+      dispatch({
+        type: API_ACTIONS.ERROR,
+        payload: error,
+      });
+    }
+  };
 
-  const getSingle = useCallback(
-    async (id, getConfig) => {
-      setIsLoading(true);
-      try {
-        const res = await axios.get(`${url}/${id}`, {
-          ...config,
-          ...getConfig,
-        });
-        setMovie(res?.data);
-      } catch (error) {
-        console.error("Error fetching movie:", error);
-        setError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [url, config]
-  );
+  const getSingle = async (id, getConfig) => {
+    try {
+      dispatch({
+        type: API_ACTIONS.SET_LOADING,
+      });
+      const res = await axios.get(`${url}/${id}`, {
+        ...config,
+        ...getConfig,
+      });
+      dispatch({ type: API_ACTIONS.GET_SINGLE, payload: res?.data });
+    } catch (error) {
+      console.error("Error fetching movie:", error);
+      dispatch({
+        type: API_ACTIONS.ERROR,
+        payload: error,
+      });
+    }
+  };
 
-  const post = useCallback(
-    async (body) => {
-      setIsLoading(true);
-      try {
-        const res = await axios.post(url, body, config);
-        setMovies((prevState) => [...prevState, res.data]);
-        setMessage("Success!");
-      } catch (error) {
-        console.error("Error adding movie:", error);
-        setError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [url, config]
-  );
+  const post = async (body) => {
+    try {
+      dispatch({
+        type: API_ACTIONS.SET_LOADING,
+      });
+      const res = await axios.post(url, body, config);
+      dispatch({ type: API_ACTIONS.POST, payload: res.data });
+    } catch (error) {
+      console.error("Error adding movie:", error);
+      dispatch({
+        type: API_ACTIONS.ERROR,
+        payload: error,
+      });
+    }
+  };
 
-  const put = useCallback(
-    async (id, body) => {
-      setIsLoading(true);
-      try {
-        const res = await axios.put(`${url}/${id}`, body, config);
-        setMovies((prevState) =>
-          prevState.map((item) => (item.id === body.id ? res?.data : item))
-        );
-      } catch (error) {
-        console.error("Error editing movie:", error);
-        setError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [url, config]
-  );
+  const put = async (id, body) => {
+    try {
+      dispatch({
+        type: API_ACTIONS.SET_LOADING,
+      });
+      const res = await axios.put(`${url}/${id}`, body, config);
+      dispatch({
+        type: API_ACTIONS.PUT,
+        payload: { id: body.id, movies: res.data },
+      });
+    } catch (error) {
+      console.error("Error editing movie:", error);
+      dispatch({
+        type: API_ACTIONS.ERROR,
+        payload: error,
+      });
+    }
+  };
 
-  const del = useCallback(
-    async (id) => {
-      setIsLoading(true);
-      try {
-        await axios.delete(`${url}/${id}`, config);
-        setMovies((prevState) => prevState.filter((item) => item.id !== id));
-      } catch (error) {
-        console.error("Error deleting movie:", error);
-        setError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [url, config]
-  );
+  const del = async (id) => {
+    try {
+      dispatch({
+        type: API_ACTIONS.SET_LOADING,
+      });
+      await axios.delete(`${url}/${id}`, config);
+      dispatch({ type: API_ACTIONS.DEL, payload: id });
+    } catch (error) {
+      console.error("Error deleting movie:", error);
+      dispatch({
+        type: API_ACTIONS.ERROR,
+        payload: error,
+      });
+    }
+  };
 
   return {
-    movies,
-    movie,
-    isLoading,
-    error,
-    message,
+    // movies,
+    // movie,
+    // isLoading,
+    // error,
+    // message,
+    ...state,
     get,
     getSingle,
     post,

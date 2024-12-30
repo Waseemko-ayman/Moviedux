@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header>
       <TitledImage
-        src="logo.png"
+        src="assets/logo.png"
         alt="moviedux"
         title="moviedux"
         className="logo"

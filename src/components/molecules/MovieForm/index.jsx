@@ -152,7 +152,7 @@ const MovieForm = ({ movie, handleSubmit, isLoading }) => {
           )}
         </div>
       ))}
-      <Button typeOf="submit" textBtn={isLoading ? "Loading..." : "Submit"} />
+      <Button typeOf="submit">{isLoading ? "Loading..." : "Submit"}</Button>
     </form>
   );
 };

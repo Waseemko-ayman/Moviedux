@@ -1,17 +1,17 @@
-import { useState } from "react";
 import MainLayout from "./components/organism/MainLayout";
-import { RoleContext } from "./context/UserRole";
-import { ROLE } from "./router/role";
+import MovieProvider from "./components/organism/MovieProvider";
+import AuthProvider from "./context/AuthContext";
 import Router from "./router";
 
 function App() {
-  const [role,] = useState(ROLE.ADMIN);
   return (
-    <RoleContext.Provider value={{ role }}>
-      <MainLayout>
-        <Router />
-      </MainLayout>
-    </RoleContext.Provider>
+    <AuthProvider>
+      <MovieProvider>
+        <MainLayout>
+          <Router />
+        </MainLayout>
+      </MovieProvider>
+    </AuthProvider>
   );
 }
 

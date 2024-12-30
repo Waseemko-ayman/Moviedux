@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
 import "./style.css";
 import Button from "../../atoms/Button";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../../router/paths";
 import TitledImage from "../Image";
-import { RoleContext } from "../../../context/UserRole";
-import { ROLE } from "../../../router/role";
+import { useAuthContext } from "../../../context/AuthContext";
+import { ROLES } from "../../../router/role";
 
 const MovieCard = ({
   isWatchlisted,
@@ -14,7 +13,7 @@ const MovieCard = ({
   handleClick,
   handleDelete,
 }) => {
-  const { role } = useContext(RoleContext);
+  const { role } = useAuthContext();
   const navigate = useNavigate();
 
   const handleEdit = (id) => {
@@ -69,13 +68,10 @@ const MovieCard = ({
             </span>
           </span>
         </label>
-        {role === ROLE.ADMIN && (
+        {role === ROLES.ADMIN && (
           <div className="movie__settings">
-            <Button textBtn="Edit" handleClick={() => handleEdit(movie.id)} />
-            <Button
-              textBtn="Delete"
-              handleClick={() => handleDelete(movie.id)}
-            />
+            <Button handleClick={() => handleEdit(movie.id)}>Edit</Button>
+            <Button handleClick={() => handleDelete(movie.id)}>Delete</Button>
           </div>
         )}
       </div>

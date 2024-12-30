@@ -1,11 +1,11 @@
 import React from "react";
 import "./style.css";
 
-const Button = ({ textBtn, handleClick, typeOf }) => {
+const Button = ({ children, handleClick, typeOf }) => {
   return (
     <>
       <button typeof={typeOf} className="button" onClick={handleClick}>
-        {textBtn}
+        {children}
       </button>
     </>
   );

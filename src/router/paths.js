@@ -3,9 +3,11 @@ export const PATHS = {
     ROOT: "/movies",
     VIEW: "/movies/:id",
     EDIT: "/movies/:id/edit",
-    CREATE: "/movies/create"
+    CREATE: "/movies/create",
+    WATCHLIST: "/movies/watchlist",
   },
-  WATCHLIST: "/watchlist",
+  LOGIN: "/login",
+  SIGNUP: "/signup",
   ERRORS: {
     NOT_FOUND: "/404",
   },

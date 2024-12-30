@@ -3,22 +3,19 @@ import { PATHS } from "./paths";
 import MoviesPage from "../pages/MoviesPage";
 import WatchlistPage from "../pages/WatchlistPage";
 import MoviePage from "../pages/MoviePage";
-import * as T from "../components/organism/Typography";
 import EditMoviePage from "../pages/EditMoviePage"
 import CreateMoviePage from "../pages/CreateMoviePage"
+import NotFoundPage from "../pages/NotFoundPage";
+import LoginPage from "../pages/LoginPage";
+import SignupPage from "../pages/SignupPage";
+import AdminGuard from "../Guards/AdminGuard";
+import UserGuard from "../Guards/UserGuard";
+import GuestGuard from "../Guards/GuestGuard";
 
-export const adminPages = (role) => [
-  ...routes
-]
-
-export const routes = [
-  {
-    path: "/",
-    element: <Navigate to={PATHS.MOVIES.ROOT} replace={true} />
-  },
+export const adminPages = [
   {
     path: PATHS.MOVIES.ROOT,
-    element: <Outlet />,
+    element: <AdminGuard />,
     children: [
       {
         index: true,
@@ -35,16 +32,70 @@ export const routes = [
       {
         path: PATHS.MOVIES.CREATE,
         element: <CreateMoviePage />
-      }
+      },
+      {
+        path: PATHS.MOVIES.WATCHLIST,
+        element: <WatchlistPage />,
+      },
     ]
   },
+]
+
+export const userPages = [
   {
-    path: PATHS.WATCHLIST,
-    element: <WatchlistPage />,
+    path: PATHS.MOVIES.ROOT,
+    element: <UserGuard />,
+    children: [
+      {
+        index: true,
+        element: <MoviesPage />,
+      },
+      {
+        path: PATHS.MOVIES.VIEW,
+        element: <MoviePage />,
+      },
+      {
+        path: PATHS.MOVIES.WATCHLIST,
+        element: <WatchlistPage />,
+      },
+    ]
+  }
+];
+
+export const AuthPages = [
+  {
+    path: PATHS.LOGIN,
+    element: (
+      <GuestGuard>
+        <LoginPage />
+      </GuestGuard>
+    )
   },
   {
+    path: PATHS.SIGNUP,
+    element: (
+      <GuestGuard>
+        <SignupPage />
+      </GuestGuard>
+    )
+  },
+]
+
+export const guestPages = [
+  ...AuthPages
+]
+
+export const routes = [
+  {
+    path: "/",
+    element: <Navigate to={PATHS.MOVIES.ROOT} replace={true} />
+  },
+  ...adminPages,
+  ...guestPages,
+  ...userPages,
+  {
     path: PATHS.ERRORS.NOT_FOUND,
-    element: <T.H1>No Page</T.H1>
+    element: <NotFoundPage />
   },
   {
     path: "*",
