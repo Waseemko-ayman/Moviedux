@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { PATHS } from "./paths";
 import MoviesPage from "../pages/MoviesPage";
 import WatchlistPage from "../pages/WatchlistPage";

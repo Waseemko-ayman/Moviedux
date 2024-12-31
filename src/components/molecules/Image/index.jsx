@@ -1,4 +1,3 @@
-import React from "react";
 import "./style.css";
 
 const TitledImage = ({ src, alt, title, className, onClick }) => {

@@ -1,4 +1,3 @@
-import React from "react";
 import * as T from "../../components/organism/Typography";
 import "./style.css";
 

@@ -71,15 +71,15 @@
   width: 180px;
   padding: 5px 10px;
   font-size: 13px;
-  border-radius: 8px;
+  border-radius: 50px;
 }
 
 .movie__card .switch {
   margin: 10px auto;
   position: relative;
   display: inline-block;
-  width: 180px; /* Width large enough to fit the label text */
-  height: 23px; /* Adjust height as needed */
+  width: 180px;
+  height: 23px;
 }
 
 .movie__card .switch input {

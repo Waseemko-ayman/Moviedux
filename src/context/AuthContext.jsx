@@ -8,7 +8,7 @@ const myToken = () => localStorage.getItem("token");
 const myRole = () => localStorage.getItem("role");
 
 const AuthProvider = ({ children }) => {
-  const [role] = useState(() => myRole() || ROLES.GUEST);
+  const [role] = useState(() => myRole() || ROLES.ADMIN);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(() => myToken() || "");
 

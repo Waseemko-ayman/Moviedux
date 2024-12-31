@@ -18,7 +18,8 @@ const EditMoviePage = () => {
 
   useEffect(() => {
     getSingle(id);
-  }, [getSingle, id]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   return (
     <div className="movie__edit">

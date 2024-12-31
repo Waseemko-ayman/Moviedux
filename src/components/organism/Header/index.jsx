@@ -1,4 +1,3 @@
-import React from "react";
 import "./style.css";
 import TitledImage from "../../molecules/Image";
 import Navbar from "../Navbar";
