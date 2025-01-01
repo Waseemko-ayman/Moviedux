@@ -18,7 +18,7 @@ const inputsArray = [
   {
     id: "lastname",
     name: "lastname",
-    label: "Lastname",
+    label: "LastName",
     type: "text",
     placeholder: "lastname",
   },
@@ -39,6 +39,7 @@ const inputsArray = [
 ];
 
 const SignupPage = () => {
+  const [showPass, setShowPass] = useState(false);
   const { setUser, setToken, setRole } = useAuthContext();
   const [formData, setFormData] = useState({
     firstname: "",
@@ -51,30 +52,48 @@ const SignupPage = () => {
     e.preventDefault();
     console.log("submit", formData);
     try {
-      const res = axios.post(`${AUTH_API}auth/signup`);
-      setUser(res.data.data);
-      setToken(res.data.data.token);
-      setRole(ROLES.USER);
+      const res = await axios.post(`${AUTH_API}signup`, formData);
+      setUser(res.data);
+      setToken(res.data.token);
+      setRole(ROLES.ADMIN);
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", ROLES.ADMIN);
     } catch (error) {
-      console.log(error);
+      console.error(
+        "signup failed:",
+        error.response ? error.response.data : error.message
+      );
     }
   };
 
   const handleChangeInput = ({ target: { value, name } }) => {
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
+
+  const hadnleShowPass = () => {
+    setShowPass(!showPass);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       {inputsArray.map((input) => (
         <div key={input.id} className="signup">
           <label htmlFor={input.id}>{input.label}</label>
           <Input
-            inputType={input.type}
+            inputType={
+              input.type === "password"
+                ? showPass
+                  ? "text"
+                  : "password"
+                : input.type
+            }
             inputId={input.id}
             inputName={input.name}
             inputValue={formData[input.id]}
             handleChange={handleChangeInput}
             placeholder={input.placeholder}
+            eyeImgSrc={showPass ? "/assets/eye.svg" : "/assets/eye-off.svg"}
+            onClick={hadnleShowPass}
           />
         </div>
       ))}

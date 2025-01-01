@@ -25,27 +25,39 @@ const inputsArray = [
 ];
 
 const SignupPage = () => {
+  const [showPass, setShowPass] = useState(false);
   const { setUser, setToken, setRole } = useAuthContext();
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     try {
-      const res = axios.post(`${AUTH_API}auth/login`);
-      setUser(res.data.data);
-      setToken(res.data.data.token);
-      setRole(ROLES.USER);
+      const res = await axios.post(`${AUTH_API}login`, formData);
+      setUser(res.data);
+      setToken(res.token);
+      setRole(ROLES.ADMIN);
+      localStorage.setItem("token", res.token);
+      localStorage.setItem("role", ROLES.ADMIN);
     } catch (error) {
-      console.log(error);
+      console.error(
+        "Login failed:",
+        error.response ? error.response.data : error.message
+      );
     }
   };
 
   const handleChangeInput = ({ target: { value, name } }) => {
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
+
+  const hadnleShowPass = () => {
+    setShowPass(!showPass);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       {inputsArray.map((input) => (
@@ -53,12 +65,20 @@ const SignupPage = () => {
           <label htmlFor={input.id}>{input.label}</label>
           <Input
             key={input.id}
-            inputType={input.type}
+            inputType={
+              input.type === "password"
+                ? showPass
+                  ? "text"
+                  : "password"
+                : input.type
+            }
             inputId={input.id}
             inputName={input.name}
             inputValue={formData[input.id]}
             handleChange={handleChangeInput}
             placeholder={input.placeholder}
+            eyeImgSrc={showPass ? "/assets/eye.svg" : "/assets/eye-off.svg"}
+            onClick={hadnleShowPass}
           />
         </div>
       ))}

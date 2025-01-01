@@ -1,29 +1,54 @@
-:is(.input, textarea) {
+.input__wrapper {
   max-width: 100%;
   width: 100%;
-  padding: 15px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  color: #fff;
+  border-radius: 100px;
   background-color: #272727;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
   transition: all 0.3s;
 }
 
-.input {
-  border-radius: 100px;
-}
-
-:is(.input, textarea):focus {
-  border-color: #ffa100;
-}
-
 @media (max-width: 496px) {
-  .input {
+  .input__wrapper {
     border-radius: 8px;
   }
 }
 
+:is(input, textarea) {
+  width: 100%;
+  font-size: 16px;
+  padding: 15px;
+  color: #fff;
+  background-color: inherit;
+  outline: none;
+  border: none;
+}
+
+input {
+  flex: 1;
+  height: 100%;
+  border-radius: 100px;
+}
+
+.textarea {
+  border-radius: 0 !important;
+}
+
 textarea {
-  height: 100px;
+  height: 120px;
   resize: none;
+  border-radius: 10px !important;
+}
+
+.input__wrapper:focus-within {
+  border-color: #ffa100 !important;
+}
+
+.input__wrapper img {
+  width: 40px;
+  padding-right: 15px;
+  cursor: pointer;
 }

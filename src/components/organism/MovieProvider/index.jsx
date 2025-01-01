@@ -5,7 +5,11 @@ import useAPI from "../../../Hooks/useAPI";
 
 const MovieProvider = ({ children }) => {
   const [watchlist, setWatchlist] = useState([]);
-  const { get, del, movies, isLoading, error } = useAPI(`${API_URL}/movies`);
+  const { get, del, movies, isLoading, error } = useAPI(`${API_URL}/movies`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
 
   const toggleWatchlist = (movieId) => {
     setWatchlist((prevState) =>
@@ -17,7 +21,7 @@ const MovieProvider = ({ children }) => {
 
   useEffect(() => {
     get();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

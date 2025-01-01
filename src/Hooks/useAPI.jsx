@@ -161,11 +161,6 @@ const useAPI = (url, config) => {
   };
 
   return {
-    // movies,
-    // movie,
-    // isLoading,
-    // error,
-    // message,
     ...state,
     get,
     getSingle,

@@ -8,12 +8,14 @@ const myToken = () => localStorage.getItem("token");
 const myRole = () => localStorage.getItem("role");
 
 const AuthProvider = ({ children }) => {
-  const [role] = useState(() => myRole() || ROLES.ADMIN);
+  const [role, setRole] = useState(() => myRole() || ROLES.ADMIN);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(() => myToken() || "");
 
+  console.log(role, user, token)
+
   return (
-    <AuthContext.Provider value={{ role, user, setUser, token, setToken }}>
+    <AuthContext.Provider value={{ role, setRole, user, setUser, token, setToken }}>
       {children}
     </AuthContext.Provider>
   );

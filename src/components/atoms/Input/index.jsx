@@ -7,28 +7,36 @@ const Input = ({
   inputValue,
   placeholder,
   handleChange,
+  eyeImgSrc,
+  onClick,
 }) => {
   return (
     <>
       {inputType === "textarea" ? (
-        <textarea
-          type={inputType}
-          id={inputId}
-          name={inputName}
-          value={inputValue}
-          placeholder={placeholder}
-          onChange={handleChange}
-        />
+        <div className="input__wrapper textarea">
+          <textarea
+            type={inputType}
+            id={inputId}
+            name={inputName}
+            value={inputValue}
+            placeholder={placeholder}
+            onChange={handleChange}
+          />
+        </div>
       ) : (
-        <input
-          className="input"
-          type={inputType}
-          id={inputId}
-          name={inputName}
-          value={inputValue}
-          placeholder={placeholder}
-          onChange={handleChange}
-        />
+        <div className="input__wrapper">
+          <input
+            type={inputType}
+            id={inputId}
+            name={inputName}
+            value={inputValue}
+            placeholder={placeholder}
+            onChange={handleChange}
+          />
+          {inputType === "password" && (
+            <img src={eyeImgSrc} alt="icon" onClick={onClick} />
+          )}
+        </div>
       )}
     </>
   );

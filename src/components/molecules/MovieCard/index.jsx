@@ -37,7 +37,7 @@ const MovieCard = ({
   return (
     <div className="movie__card">
       <TitledImage
-        src={`assets/${movie?.imageSrc}`}
+        src={`/assets/${movie?.imageSrc}`}
         alt={movie?.imageAlt}
         title={movie?.imageAlt}
         onError={handleError}
