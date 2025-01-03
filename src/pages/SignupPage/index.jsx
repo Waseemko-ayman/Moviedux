@@ -1,68 +1,30 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { AUTH_API } from "../../config/api";
 import { useAuthContext } from "../../context/AuthContext";
-import { ROLES } from "../../router/role";
 import Input from "../../components/atoms/Input";
 import "./style.css";
 import Button from "../../components/atoms/Button";
-
-const inputsArray = [
-  {
-    id: "firstname",
-    name: "firstname",
-    label: "FirstName",
-    type: "text",
-    placeholder: "firstname",
-  },
-  {
-    id: "lastname",
-    name: "lastname",
-    label: "LastName",
-    type: "text",
-    placeholder: "lastname",
-  },
-  {
-    id: "email",
-    name: "email",
-    label: "Email",
-    type: "email",
-    placeholder: "your email...",
-  },
-  {
-    id: "password",
-    name: "password",
-    label: "Password",
-    type: "password",
-    placeholder: "your password...",
-  },
-];
+import { SIGNUP_INPUTS } from "../../constants/auth";
 
 const SignupPage = () => {
   const [showPass, setShowPass] = useState(false);
-  const { setUser, setToken, setRole } = useAuthContext();
+  const { signup, isLoading } = useAuthContext();
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
+    username: "",
     email: "",
     password: "",
+    rePassword: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submit", formData);
-    try {
-      const res = await axios.post(`${AUTH_API}signup`, formData);
-      setUser(res.data);
-      setToken(res.data.token);
-      setRole(ROLES.ADMIN);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", ROLES.ADMIN);
-    } catch (error) {
-      console.error(
-        "signup failed:",
-        error.response ? error.response.data : error.message
-      );
+    if (formData.password === formData.rePassword) {
+      signup({
+        name: formData.username,
+        email: formData.email,
+        password: formData.password,
+      });
+    } else {
+      alert("Password and Repeat password are not the same");
     }
   };
 
@@ -76,7 +38,7 @@ const SignupPage = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {inputsArray.map((input) => (
+      {SIGNUP_INPUTS.map((input) => (
         <div key={input.id} className="signup">
           <label htmlFor={input.id}>{input.label}</label>
           <Input
@@ -91,14 +53,13 @@ const SignupPage = () => {
             inputName={input.name}
             inputValue={formData[input.id]}
             handleChange={handleChangeInput}
-            placeholder={input.placeholder}
             eyeImgSrc={showPass ? "/assets/eye.svg" : "/assets/eye-off.svg"}
             onClick={hadnleShowPass}
           />
         </div>
       ))}
 
-      <Button typeOf="submit">Signup</Button>
+      <Button typeOf="submit">{isLoading ? "Loading..." : "Signup"}</Button>
     </form>
   );
 };

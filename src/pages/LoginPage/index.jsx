@@ -1,32 +1,13 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { AUTH_API } from "../../config/api";
 import { useAuthContext } from "../../context/AuthContext";
-import { ROLES } from "../../router/role";
 import Input from "../../components/atoms/Input";
 import Button from "../../components/atoms/Button";
 import "./style.css";
-
-const inputsArray = [
-  {
-    id: "email",
-    name: "email",
-    label: "Email",
-    type: "email",
-    placeholder: "your email...",
-  },
-  {
-    id: "password",
-    name: "password",
-    label: "Password",
-    type: "password",
-    placeholder: "your password...",
-  },
-];
+import { LOGIN_INPUTS } from "../../constants/auth";
 
 const SignupPage = () => {
   const [showPass, setShowPass] = useState(false);
-  const { setUser, setToken, setRole } = useAuthContext();
+  const { login, isLoading } = useAuthContext();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -34,20 +15,7 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    try {
-      const res = await axios.post(`${AUTH_API}login`, formData);
-      setUser(res.data);
-      setToken(res.token);
-      setRole(ROLES.ADMIN);
-      localStorage.setItem("token", res.token);
-      localStorage.setItem("role", ROLES.ADMIN);
-    } catch (error) {
-      console.error(
-        "Login failed:",
-        error.response ? error.response.data : error.message
-      );
-    }
+    login(formData);
   };
 
   const handleChangeInput = ({ target: { value, name } }) => {
@@ -60,7 +28,7 @@ const SignupPage = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {inputsArray.map((input) => (
+      {LOGIN_INPUTS.map((input) => (
         <div key={input.id} className="login">
           <label htmlFor={input.id}>{input.label}</label>
           <Input
@@ -76,14 +44,13 @@ const SignupPage = () => {
             inputName={input.name}
             inputValue={formData[input.id]}
             handleChange={handleChangeInput}
-            placeholder={input.placeholder}
             eyeImgSrc={showPass ? "/assets/eye.svg" : "/assets/eye-off.svg"}
             onClick={hadnleShowPass}
           />
         </div>
       ))}
 
-      <Button typeOf="submit">Login</Button>
+      <Button typeOf="submit">{isLoading ? "Loading..." : "Login"}</Button>
     </form>
   );
 };

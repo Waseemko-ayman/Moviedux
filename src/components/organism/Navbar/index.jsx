@@ -6,12 +6,10 @@ import { ROLES } from "../../../router/role";
 import Button from "../../atoms/Button";
 
 const Navbar = () => {
-  const { role, user, setUser, setToken, setRole } = useAuthContext();
+  const { role, data, logout } = useAuthContext();
 
   const handleClick = () => {
-    setUser(null);
-    setToken("");
-    setRole(ROLES.GUEST);
+    logout();
   };
 
   return (
@@ -42,7 +40,7 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="username">
-            <h4>" Weclome {user?.username} "</h4>
+            <h4>" Weclome {data?.name} "</h4>
           </div>
         </>
       )}

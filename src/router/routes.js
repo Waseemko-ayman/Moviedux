@@ -86,10 +86,10 @@ export const guestPages = [
 ]
 
 export const routes = [
-  {
-    path: "/",
-    element: <Navigate to={PATHS.MOVIES.ROOT} replace={true} />
-  },
+  // {
+  //   path: "/",
+  //   element: <Navigate to={PATHS.MOVIES.ROOT} replace={true} />
+  // },
   ...adminPages,
   ...guestPages,
   ...userPages,

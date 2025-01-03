@@ -18,8 +18,7 @@ const MoviePage = () => {
 
   useEffect(() => {
     getSingle(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [getSingle, id]);
 
   return (
     <div>
