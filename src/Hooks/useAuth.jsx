@@ -25,11 +25,10 @@ const reduce = (state, action) => {
       const role = action?.payload?.isAdmin ? ROLES.ADMIN : ROLES.USER;
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      localStorage.setItem("user", JSON.stringify(action?.payload?.user));
       return {
-        ...state,
-        isAuth: false,
-        user: action.payload.user,
+        isAuth: true,
+        user: action?.payload?.user || state?.user,
         token: token,
         role: role,
         error: null,
@@ -65,7 +64,6 @@ const useAuth = () => {
     dispatch({ type: AUTH_ACTIONS.SET_LOADING });
     try {
       const { data } = await axios.post(AUTH_API + AUTH_PATHS.LOGIN, body);
-      console.log(data)
       dispatch({ type: AUTH_ACTIONS.AUTHORIZE, payload: data?.data || data });
     } catch (error) {
       dispatch({ type: AUTH_ACTIONS.SET_ERROR, payload: error.message });

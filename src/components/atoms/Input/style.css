@@ -33,6 +33,16 @@ input {
   border-radius: 100px;
 }
 
+input:-webkit-autofill {
+  color: #fff !important;
+  background-color: #4a4a4a;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus {
+  border-color: gold;
+}
+
 .textarea {
   border-radius: 0 !important;
 }

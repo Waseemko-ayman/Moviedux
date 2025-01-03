@@ -82,14 +82,18 @@ export const AuthPages = [
 ]
 
 export const guestPages = [
-  ...AuthPages
+  ...AuthPages,
+  {
+    path: "/",
+    element: <Navigate to={PATHS.LOGIN} replace={true} />
+  }
 ]
 
 export const routes = [
-  // {
-  //   path: "/",
-  //   element: <Navigate to={PATHS.MOVIES.ROOT} replace={true} />
-  // },
+  {
+    path: "/",
+    element: <Navigate to={PATHS.LOGIN} replace={true} />
+  },
   ...adminPages,
   ...guestPages,
   ...userPages,

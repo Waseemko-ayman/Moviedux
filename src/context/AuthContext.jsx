@@ -1,16 +1,18 @@
 import useAuth from "../Hooks/useAuth";
-const { createContext, useContext } = require("react");
+import React, { createContext, useContext, useEffect } from "react";
 
 export const AuthContext = createContext(null);
 export const useAuthContext = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const data = useAuth();
-  if (data?.user) {
-    console.log(data?.user?.email);
-  } else {
-    console.log("User is not logged in");
-  }
+  useEffect(() => {
+    if (data?.user) {
+      console.log(data?.user?.email);
+    } else {
+      console.log("User is not logged in");
+    }
+  }, [data?.user]);
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };
