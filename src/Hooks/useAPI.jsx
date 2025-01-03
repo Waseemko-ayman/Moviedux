@@ -85,7 +85,7 @@ const useAPI = (url, config) => {
       console.error("Error fetching movies:", error);
       dispatch({
         type: API_ACTIONS.ERROR,
-        payload: error,
+        payload: error.message,
       });
     }
   };
@@ -104,7 +104,7 @@ const useAPI = (url, config) => {
       console.error("Error fetching movie:", error);
       dispatch({
         type: API_ACTIONS.ERROR,
-        payload: error,
+        payload: error.message,
       });
     }
   };
@@ -120,7 +120,7 @@ const useAPI = (url, config) => {
       console.error("Error adding movie:", error);
       dispatch({
         type: API_ACTIONS.ERROR,
-        payload: error,
+        payload: error.message,
       });
     }
   };
@@ -139,7 +139,7 @@ const useAPI = (url, config) => {
       console.error("Error editing movie:", error);
       dispatch({
         type: API_ACTIONS.ERROR,
-        payload: error,
+        payload: error.message,
       });
     }
   };
@@ -155,7 +155,7 @@ const useAPI = (url, config) => {
       console.error("Error deleting movie:", error);
       dispatch({
         type: API_ACTIONS.ERROR,
-        payload: error,
+        payload: error.message,
       });
     }
   };

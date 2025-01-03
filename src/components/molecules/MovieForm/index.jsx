@@ -73,7 +73,7 @@ const MovieForm = ({ movie, handleSubmit, isLoading }) => {
         year: movie.year,
         description: movie.description,
       });
-      setImagePreview(movie.imageSrc || ""); // عرض الصورة الحالية
+      setImagePreview(movie.imageSrc || "");
       setIsFirstLoad(false);
     }
   }, [movie, isFirstLoad]);

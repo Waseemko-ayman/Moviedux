@@ -6,9 +6,20 @@
   font-family: "Roboto", sans-serif;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   color: #fff;
   background-color: #121212;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 input,

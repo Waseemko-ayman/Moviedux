@@ -7,7 +7,7 @@ const AdminGuard = () => {
   const { role } = useAuthContext();
 
   if (role === ROLES.ADMIN) return <Outlet />;
-  return <Navigate to={PATHS.MOVIES.ROOT} replace={true} />;
+  return <Navigate to={PATHS.LOGIN} replace={true} />;
 };
 
 export default AdminGuard;
