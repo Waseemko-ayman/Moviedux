@@ -17,7 +17,7 @@
   }
 }
 
-:is(input, textarea) {
+:is(input:not([type="checkbox"]), textarea) {
   width: 100%;
   font-size: 16px;
   padding: 15px;
@@ -27,7 +27,7 @@
   border: none;
 }
 
-input {
+input:not([type="checkbox"]) {
   flex: 1;
   height: 100%;
   border-radius: 100px;
@@ -61,4 +61,60 @@ textarea {
   width: 40px;
   padding-right: 15px;
   cursor: pointer;
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+}
+
+.checkbox a {
+  color: #ffa100;
+  background-color: transparent;
+  border-radius: 0 !important;
+  box-shadow: none;
+  padding: 0;
+  transition: all 0.3s;
+}
+
+.checkbox a:hover {
+  text-decoration: underline;
+}
+
+.custom__checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.custom__checkbox input {
+  display: grid;
+  place-content: center;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+  position: relative;
+}
+
+.custom__checkbox input::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em white;
+}
+
+.custom__checkbox input:checked {
+  background-color: #ffa100;
+  border-color: #ffa100;
+}
+
+.custom__checkbox input:checked::before {
+  transform: scale(1);
 }

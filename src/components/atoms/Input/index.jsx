@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const Input = ({
@@ -9,6 +10,7 @@ const Input = ({
   handleChange,
   eyeImgSrc,
   onClick,
+  register = () => {},
 }) => {
   return (
     <>
@@ -23,6 +25,24 @@ const Input = ({
             onChange={handleChange}
           />
         </div>
+      ) : inputType === "checkbox" ? (
+        <div className="checkbox">
+          <label className="custom__checkbox">
+            <input
+              type={inputType}
+              id={inputId}
+              name={inputName}
+              value={inputValue}
+              placeholder={placeholder}
+              onChange={handleChange}
+              {...register(inputName)}
+            />
+            <span></span>
+          </label>
+          <p>
+            I agree with <Link href="#">Terms and Conditions</Link>
+          </p>
+        </div>
       ) : (
         <div className="input__wrapper">
           <input
@@ -32,6 +52,7 @@ const Input = ({
             value={inputValue}
             placeholder={placeholder}
             onChange={handleChange}
+            {...register(inputName)}
           />
           {inputType === "password" && (
             <img src={eyeImgSrc} alt="icon" onClick={onClick} />

@@ -36,6 +36,12 @@ export const SIGNUP_INPUTS = [
     label: "Repeat Password",
     type: "password",
   },
+  {
+    id: "checked",
+    name: "checked",
+    label: "checkbox",
+    type: "checkbox",
+  },
 ];
 
 export const LOGIN_INPUTS = [

@@ -1,9 +1,15 @@
-.signup {
-  margin-bottom: 15px;
+.box {
+  margin-bottom: 20px;
 }
 
-.signup label {
+.box label:not(.custom__checkbox) {
   display: block;
   font-size: 17px;
   margin-bottom: 10px;
+}
+
+.error {
+  display: block;
+  margin-top: 10px;
+  color: red;
 }
