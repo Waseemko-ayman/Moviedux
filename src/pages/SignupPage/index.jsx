@@ -78,7 +78,9 @@ const SignupPage = () => {
             inputId={id}
             inputName={name}
             eyeImgSrc={
-              showPass[name] ? "/assets/eye.svg" : "/assets/eye-off.svg"
+              type === "password" && showPass[name]
+                ? "/assets/eye.svg"
+                : "/assets/eye-off.svg"
             }
             onClick={() => handleShowPass(name)}
             register={register}
