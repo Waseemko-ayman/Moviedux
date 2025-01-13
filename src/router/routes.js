@@ -1,16 +1,19 @@
 import { Navigate } from "react-router-dom";
 import { PATHS } from "./paths";
-import MoviesPage from "../pages/MoviesPage";
-import WatchlistPage from "../pages/WatchlistPage";
-import MoviePage from "../pages/MoviePage";
-import EditMoviePage from "../pages/EditMoviePage"
-import CreateMoviePage from "../pages/CreateMoviePage"
-import NotFoundPage from "../pages/NotFoundPage";
-import LoginPage from "../pages/LoginPage";
-import SignupPage from "../pages/SignupPage";
+import { lazy } from "react";
+
 import AdminGuard from "../Guards/AdminGuard";
 import UserGuard from "../Guards/UserGuard";
 import GuestGuard from "../Guards/GuestGuard";
+
+const MoviesPage = lazy(() => import("../pages/MoviesPage"));
+const WatchlistPage = lazy(() => import("../pages/WatchlistPage"));
+const MoviePage = lazy(() => import("../pages/MoviePage"));
+const EditMoviePage = lazy(() => import("../pages/EditMoviePage"));
+const CreateMoviePage = lazy(() => import("../pages/CreateMoviePage"));
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
+const LoginPage = lazy(() => import("../pages/LoginPage"));
+const SignupPage = lazy(() => import("../pages/SignupPage"));
 
 export const adminPages = [
   {

@@ -1,6 +1,6 @@
 import "./style.css";
 
-const TitledImage = ({ src, alt, title, className, onClick }) => {
+const TitledImage = ({ src, alt, title, className, onClick, loading }) => {
   return (
     <>
       <img
@@ -8,8 +8,8 @@ const TitledImage = ({ src, alt, title, className, onClick }) => {
         alt={alt}
         title={title}
         className={className}
-        loading="lazy"
         onClick={onClick}
+        loading={loading}
       />
     </>
   );

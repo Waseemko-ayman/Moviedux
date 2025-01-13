@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React, { lazy, Suspense, useContext } from "react";
 import "./style.css";
 import * as T from "../../components/organism/Typography";
-import MovieCard from "../../components/molecules/MovieCard";
-import MoviesGridDiv from "../../components/molecules/MoviesGridDiv";
-import Loading from "../../components/molecules/Loading";
 import { useNavigate } from "react-router-dom";
 import { MovieContext } from "../../context/MovieContext";
 import { PATHS } from "../../router/paths";
+import ContentLoading from "../../components/molecules/ContentLoading";
+const MoviesGridDiv = lazy(() =>
+  import("../../components/molecules/MoviesGridDiv")
+);
+const MovieCard = lazy(() => import("../../components/molecules/MovieCard"));
 
 const WatchlistPage = () => {
-  const { movies, watchlist, toggleWatchlist, isLoading } =
-    useContext(MovieContext);
+  const { movies, watchlist, toggleWatchlist } = useContext(MovieContext);
 
   const navigate = useNavigate();
 
@@ -21,7 +22,7 @@ const WatchlistPage = () => {
   return (
     <div>
       <T.H1 className="title">Your Watchlist</T.H1>
-      {!isLoading && (
+      <Suspense fallback={<ContentLoading />}>
         <MoviesGridDiv>
           {watchlist.map((id) => {
             const movie = movies.find((movie) => movie.id === id);
@@ -36,8 +37,7 @@ const WatchlistPage = () => {
             );
           })}
         </MoviesGridDiv>
-      )}
-      {isLoading && <Loading />}
+      </Suspense>
     </div>
   );
 };

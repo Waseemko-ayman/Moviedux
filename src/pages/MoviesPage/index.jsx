@@ -1,17 +1,21 @@
-import React, { useContext, useState } from "react";
-import "./style.css";
-import MovieCard from "../../components/molecules/MovieCard";
+import React, { lazy, Suspense, useContext, useState } from "react";
 import FilterBar from "../../components/molecules/FilterBar";
-import Loading from "../../components/molecules/Loading";
 import { useNavigate } from "react-router-dom";
-import ErrorFetching from "../../components/atoms/ErrorFetching";
-import MoviesGridDiv from "../../components/molecules/MoviesGridDiv";
+// import ErrorFetching from "../../components/atoms/ErrorFetching";
 import { MovieContext } from "../../context/MovieContext";
 import { PATHS } from "../../router/paths";
 import Input from "../../components/atoms/Input";
+import "./style.css";
+import ContentLoading from "../../components/molecules/ContentLoading";
+import ErrorFetching from "../../components/atoms/ErrorFetching";
+
+const MoviesGridDiv = lazy(() =>
+  import("../../components/molecules/MoviesGridDiv")
+);
+const MovieCard = lazy(() => import("../../components/molecules/MovieCard"));
 
 const MoviesPage = () => {
-  const { movies, watchlist, toggleWatchlist, isLoading, error, del } =
+  const { movies, watchlist, toggleWatchlist, error, del } =
     useContext(MovieContext);
 
   const navigate = useNavigate();
@@ -89,23 +93,20 @@ const MoviesPage = () => {
       {error ? (
         <ErrorFetching errorText="Error fetching movies !" />
       ) : (
-        <>
-          {!isLoading && (
-            <MoviesGridDiv>
-              {filteredMovies.map((movie) => (
-                <MovieCard
-                  key={movie.id}
-                  movie={movie}
-                  toggleWatchlist={toggleWatchlist}
-                  isWatchlisted={watchlist.includes(movie.id)}
-                  handleClick={handleClick}
-                  handleDelete={handleDelete}
-                />
-              ))}
-            </MoviesGridDiv>
-          )}
-          {isLoading && <Loading />}
-        </>
+        <Suspense fallback={<ContentLoading />}>
+          <MoviesGridDiv>
+            {filteredMovies.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                toggleWatchlist={toggleWatchlist}
+                isWatchlisted={watchlist.includes(movie.id)}
+                handleClick={handleClick}
+                handleDelete={handleDelete}
+              />
+            ))}
+          </MoviesGridDiv>
+        </Suspense>
       )}
     </div>
   );

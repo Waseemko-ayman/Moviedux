@@ -1,7 +1,7 @@
 import "./style.css";
 import * as T from "../../organism/Typography";
 
-const Loading = () => {
+const ContentLoading = () => {
   return (
     <div className="loading__container">
       <div className="spinner"></div>
@@ -10,4 +10,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default ContentLoading;
