@@ -5,10 +5,10 @@ import axios from "axios";
 import { AUTH_API } from "../config/api";
 
 const initialState = {
-  isAuth: false,
-  user: null,
-  token: null,
-  role: ROLES.GUEST,
+  isAuth: localStorage.getItem("isAuth") || false,
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  token: localStorage.getItem("token") || null,
+  role: localStorage.getItem("role") || ROLES.GUEST,
   error: null,
   isLoading: false,
 };
@@ -21,11 +21,13 @@ const reduce = (state, action) => {
         isLoading: true,
       };
     case AUTH_ACTIONS.AUTHORIZE:
-      const token = action?.payload?.token || state?.token;
+      const token =
+        action?.payload?.token || state?.token || localStorage.getItem("token");
       const role = action?.payload?.isAdmin ? ROLES.ADMIN : ROLES.USER;
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-      localStorage.setItem("user", JSON.stringify(action?.payload?.user));
+      localStorage.setItem("isAuth", true);
+      localStorage.setItem("user", JSON.stringify(action?.payload));
       return {
         isAuth: true,
         user: action?.payload?.user || state?.user,
@@ -35,10 +37,17 @@ const reduce = (state, action) => {
         isLoading: false,
       };
     case AUTH_ACTIONS.LOGOUT:
-      ["token", "role", "user"].forEach((item) =>
+      ["token", "role", "user", "isAuth"].forEach((item) =>
         localStorage.removeItem(item)
       );
-      return initialState;
+      return {
+        isAuth: false,
+        user: null,
+        token: null,
+        role: ROLES.GUEST,
+        error: null,
+        isLoading: false,
+      };
     case AUTH_ACTIONS.SET_ERROR:
       return {
         ...state,

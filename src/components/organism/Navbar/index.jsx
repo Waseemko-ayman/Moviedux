@@ -6,7 +6,7 @@ import { ROLES } from "../../../router/role";
 import Button from "../../atoms/Button";
 
 const Navbar = () => {
-  const { role, data, logout } = useAuthContext();
+  const { role, user, logout } = useAuthContext();
 
   const handleClick = () => {
     logout();
@@ -40,7 +40,7 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="username">
-            <h4>" Weclome {data?.name} "</h4>
+            <h4>" Weclome {user?.name} "</h4>
           </div>
         </>
       )}
