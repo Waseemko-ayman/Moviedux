@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const formSchema = Yup.object({
-  email: Yup.string().required("Email is required"),
+  email: Yup.string().email().required("Email is required"),
   password: Yup.string().required("Password is required"),
 });
 
@@ -21,7 +21,7 @@ const SignupPage = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm({
     resolver: yupResolver(formSchema),
   });
@@ -31,7 +31,7 @@ const SignupPage = () => {
     reset();
   };
 
-  const hadnleShowPass = () => {
+  const handleShowPass = () => {
     setShowPass(!showPass);
   };
 
@@ -43,16 +43,17 @@ const SignupPage = () => {
           <Input
             key={id}
             inputType={
-              type === "password"
-                ? showPass[name]
-                  ? "text"
-                  : "password"
-                : type
+              type === "password" ? (showPass ? "text" : "password") : type
             }
             inputId={id}
             inputName={name}
-            eyeImgSrc={showPass ? "/assets/eye.svg" : "/assets/eye-off.svg"}
-            onClick={hadnleShowPass}
+            showImage={type === "password"}
+            eyeImgSrc={
+              type === "password" && showPass
+                ? "/assets/eye.svg"
+                : "/assets/eye-off.svg"
+            }
+            onClick={handleShowPass}
             register={register}
           />
           {errors[name] && <p className="error">{errors[name]?.message}</p>}

@@ -10,6 +10,7 @@ const Input = ({
   handleChange,
   eyeImgSrc,
   onClick,
+  showImage,
   register = () => {},
 }) => {
   return (
@@ -54,7 +55,7 @@ const Input = ({
             onChange={handleChange}
             {...register(inputName)}
           />
-          {inputType === "password" && (
+          {showImage && (
             <img src={eyeImgSrc} alt="icon" onClick={onClick} />
           )}
         </div>

@@ -15,6 +15,7 @@ const passwordRegex =
 const formSchema = Yup.object({
   username: Yup.string().required("Name is required"),
   email: Yup.string()
+    .email()
     .matches(emailRegex, "Enter Correct Email")
     .required("Email is required"),
   password: Yup.string()
@@ -46,7 +47,7 @@ const SignupPage = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm({
     resolver: yupResolver(formSchema),
   });
@@ -77,6 +78,7 @@ const SignupPage = () => {
             }
             inputId={id}
             inputName={name}
+            showImage={type === "password"}
             eyeImgSrc={
               type === "password" && showPass[name]
                 ? "/assets/eye.svg"
