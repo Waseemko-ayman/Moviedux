@@ -1,0 +1,51 @@
+export const INPUTS_ARRAY = [
+  {
+    id: "title",
+    name: "title",
+    label: "Title",
+    type: "text",
+    placeholder: "write movie title",
+  },
+  {
+    id: "uploadImage",
+    name: "uploadImage",
+    label: "Image Source",
+    type: "file",
+    placeholder: "Enter image URL",
+  },
+  {
+    id: "imageAlt",
+    name: "imageAlt",
+    label: "Image Alt",
+    type: "text",
+    placeholder: "write movie image alt",
+  },
+  {
+    id: "genre",
+    name: "genre",
+    label: "Genre",
+    type: "text",
+    placeholder: "write movie genre",
+  },
+  {
+    id: "rating",
+    name: "rating",
+    label: "Rating",
+    type: "text",
+    placeholder: "write movie rating",
+  },
+  {
+    id: "year",
+    name: "year",
+    label: "Year",
+    type: "text",
+    placeholder: "write movie year",
+  },
+  {
+    id: "description",
+    name: "description",
+    label: "Description",
+    type: "textarea",
+    placeholder: "write movie description",
+  },
+];

@@ -1,9 +1,9 @@
-import "./style.css";
-import LinkItem from "../../atoms/LinkItem";
-import { PATHS } from "../../../router/paths";
-import { useAuthContext } from "../../../context/AuthContext";
-import { ROLES } from "../../../router/role";
-import Button from "../../atoms/Button";
+import './style.css';
+import LinkItem from '../../atoms/LinkItem';
+import { PATHS } from '../../../router/paths';
+import { useAuthContext } from '../../../context/AuthContext';
+import { ROLES } from '../../../router/role';
+import Button from '../../atoms/Button';
 
 const Navbar = () => {
   const { role, user, logout } = useAuthContext();

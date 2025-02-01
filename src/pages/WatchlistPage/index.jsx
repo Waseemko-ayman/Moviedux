@@ -22,7 +22,7 @@ const WatchlistPage = () => {
   return (
     <div>
       <T.H1 className="title">Your Watchlist</T.H1>
-      <Suspense fallback={<ContentLoading />}>
+      <Suspense fallback={<ContentLoading size={50} LoadingText />}>
         <MoviesGridDiv>
           {watchlist.map((id) => {
             const movie = movies.find((movie) => movie.id === id);

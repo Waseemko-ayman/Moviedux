@@ -1,4 +1,4 @@
-import "./style.css";
+import './style.css';
 
 const Button = ({ children, handleClick, typeOf }) => {
   return (

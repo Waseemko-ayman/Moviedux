@@ -1,7 +1,6 @@
 import React, { lazy, Suspense, useContext, useState } from "react";
 import FilterBar from "../../components/molecules/FilterBar";
 import { useNavigate } from "react-router-dom";
-// import ErrorFetching from "../../components/atoms/ErrorFetching";
 import { MovieContext } from "../../context/MovieContext";
 import { PATHS } from "../../router/paths";
 import Input from "../../components/atoms/Input";
@@ -93,7 +92,7 @@ const MoviesPage = () => {
       {error ? (
         <ErrorFetching errorText="Error fetching movies !" />
       ) : (
-        <Suspense fallback={<ContentLoading />}>
+        <Suspense fallback={<ContentLoading size={50} LoadingText />}>
           <MoviesGridDiv>
             {filteredMovies.map((movie) => (
               <MovieCard

@@ -17,7 +17,7 @@ const CreateMoviePage = () => {
   return (
     <div>
       <T.H1>Create Movie</T.H1>
-      <MovieForm handleSubmit={handleCreatePost} isLoading={isLoading} />
+      <MovieForm onSubmit={handleCreatePost} isLoading={isLoading} />
     </div>
   );
 };

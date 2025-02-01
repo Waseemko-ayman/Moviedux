@@ -7,6 +7,7 @@ import { LOGIN_INPUTS } from "../../constants/auth";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import ContentLoading from "../../components/molecules/ContentLoading";
 
 const formSchema = Yup.object({
   email: Yup.string().email().required("Email is required"),
@@ -21,7 +22,7 @@ const SignupPage = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
   });
@@ -43,15 +44,15 @@ const SignupPage = () => {
           <Input
             key={id}
             inputType={
-              type === "password" ? (showPass ? "text" : "password") : type
+              type === 'password' ? (showPass ? 'text' : 'password') : type
             }
             inputId={id}
             inputName={name}
-            showImage={type === "password"}
+            showImage={type === 'password'}
             eyeImgSrc={
-              type === "password" && showPass
-                ? "/assets/eye.svg"
-                : "/assets/eye-off.svg"
+              type === 'password' && showPass
+                ? '/assets/eye.svg'
+                : '/assets/eye-off.svg'
             }
             onClick={handleShowPass}
             register={register}
@@ -60,7 +61,9 @@ const SignupPage = () => {
         </div>
       ))}
 
-      <Button typeOf="submit">{isLoading ? "Loading..." : "Login"}</Button>
+      <Button typeOf="submit">
+        {isLoading ? <ContentLoading size={24} /> : 'Login'}
+      </Button>
     </form>
   );
 };

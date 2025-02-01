@@ -26,7 +26,7 @@ const EditMoviePage = () => {
       <T.H1>Edit {id} Movie</T.H1>
       <MovieForm
         movie={movie}
-        handleSubmit={handleEditMovie}
+        onSubmit={handleEditMovie}
         isLoading={isLoading}
       />
     </div>

@@ -99,6 +99,7 @@ textarea {
   background-color: transparent;
   transition: background-color 0.3s, border-color 0.3s;
   position: relative;
+  cursor: pointer;
 }
 
 .custom__checkbox input::before {

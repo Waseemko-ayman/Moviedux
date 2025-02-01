@@ -3,14 +3,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #121212;
+  background-color: transparent;
   color: #ffffff;
 }
 
 .loading__container .spinner {
-  width: 50px;
-  height: 50px;
-  border: 6px solid rgba(255, 255, 255, 0.2);
+  border: 6px solid #121212;
   border-top-color: #f39c12;
   border-radius: 50%;
   animation: spin 1s linear infinite;

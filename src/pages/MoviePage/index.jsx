@@ -28,7 +28,7 @@ const MoviePage = () => {
       {error ? (
         <ErrorFetching errorText="Error fetching movie !" />
       ) : (
-        <Suspense fallback={<ContentLoading />}>
+        <Suspense fallback={<ContentLoading size={50} LoadingText />}>
           <MoviePageContent
             movie={movie}
             handleEdit={() => handleEdit(movie.id)}

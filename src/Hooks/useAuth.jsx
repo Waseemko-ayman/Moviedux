@@ -83,7 +83,6 @@ const useAuth = () => {
     dispatch({ type: AUTH_ACTIONS.SET_LOADING });
     try {
       const { data } = await axios.post(AUTH_API + AUTH_PATHS.SIGNUP, body);
-      console.log(data);
       dispatch({ type: AUTH_ACTIONS.AUTHORIZE, payload: data?.data || data });
     } catch (error) {
       dispatch({ type: AUTH_ACTIONS.SET_ERROR, payload: error.message });
