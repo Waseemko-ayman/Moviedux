@@ -131,6 +131,7 @@ const useAPI = (url, config) => {
         type: API_ACTIONS.SET_LOADING,
       });
       const res = await axios.put(`${url}/${id}`, body, config);
+      console.log(res);
       dispatch({
         type: API_ACTIONS.PUT,
         payload: { id: body.id, movies: res.data },
