@@ -8,13 +8,13 @@
       "rating": "8.3",
       "year": "2006",
       "description": "Is a 2006 science fiction disaster film directed by John Terlesky, featuring Stephen Baldwin as Dr. Daniel Gray. The narrative centers on a group of scientists who develop a device, code-named Eruptor, capable of manipulating dark matter to create controlled weather phenomena. However, the experiment goes awry, leading to catastrophic weather events that threaten global stability. The team races against time to prevent the device from causing irreversible damage. ",
-      "id": "1",
+      "id": "dark-storm",
       "uploadImage": {
         "0": {}
       }
     },
     {
-      "id": "2",
+      "id": "whisperof-fate",
       "title": "Whisper of Fate",
       "imageSrc": "2.jpg",
       "imageAlt": "Whisper of Fate",
@@ -27,7 +27,7 @@
       }
     },
     {
-      "id": "3",
+      "id": "beyond-the-edge",
       "title": "Beyond the Edge",
       "imageSrc": "3.jpg",
       "imageAlt": "Beyond the Edge",
@@ -37,7 +37,7 @@
       "description": "Is a 2016 American science fiction film directed by Michael Spierig and Peter Spierig. The story follows Dr. Abe Anderson (Sean Maher), a marine biologist, and Lt. Col. Harold Richards (Casper Van Dien), a pilot, who embark on a mission to explore the end of the universe. After 13 years, their ship crashes through the end of the universe, leading to unexpected and mind-bending consequences."
     },
     {
-      "id": "4",
+      "id": "lostin-shadows",
       "title": "Lost in Shadows",
       "imageSrc": "4.jpg",
       "imageAlt": "Lost in Shadows",
@@ -47,7 +47,7 @@
       "description": "Is a 2016 short film directed by Stephanie Clark. The story follows a young ballerina who arrives in the town of Teramere, unaware that the monstrous Spirit of the Shadows is seeking someone just like her to house the spirit of his lost love. The film has been praised for its atmospheric storytelling and compelling performances."
     },
     {
-      "id": "5",
+      "id": "echoes-of-power",
       "title": "Echoes of Power",
       "imageSrc": "5.jpg",
       "imageAlt": "Echoes of Power",
@@ -57,7 +57,7 @@
       "description": "Is a 2023 action-thriller that follows a team of elite operatives on a mission to prevent a global catastrophe caused by a shadowy organization. The film delves into themes of power, betrayal, and survival as the operatives face dangerous enemies and uncover a conspiracy that could change the world. Known for its intense action and compelling plot twists, the film keeps viewers on the edge of their seats with every twist and turn."
     },
     {
-      "id": "6",
+      "id": "grim-reckoning",
       "title": "Grim Reckoning",
       "imageSrc": "6.jpg",
       "imageAlt": "Grim Reckoning",
@@ -67,7 +67,7 @@
       "description": "Is a short thriller film that delves into the psychological complexities of its characters. The narrative follows a protagonist grappling with past traumas, leading to a series of intense and suspenseful events. The film has been recognized for its compelling storytelling and strong performances."
     },
     {
-      "id": "7",
+      "id": "fury's-flight",
       "title": "Fury's Flight",
       "imageSrc": "7.jpg",
       "imageAlt": "Fury's Flight",
@@ -77,7 +77,7 @@
       "description": "Is a 2007 action thriller starring Steven Seagal as John Sands, a former Air Force pilot tasked with recovering a stolen stealth bomber. The film follows Sands as he confronts mercenaries and uncovers a plot involving biological warfare. Known for its high-octane action sequences, the movie has received mixed reviews, with some praising its intense action and others criticizing its production quality."
     },
     {
-      "id": "8",
+      "id": "path-of-the-forgotten",
       "title": "Path of the Forgotten",
       "imageSrc": "8.jpg",
       "imageAlt": "Path of the Forgotten",
@@ -87,7 +87,7 @@
       "description": "Is a 2017 South Korean psychological thriller directed by Jang Hang-jun. The film follows Jin-seok, a young man whose life is turned upside down when his older brother, Yoo-seok, is abducted. Nineteen days later, Yoo-seok returns with no memory of his captivity, leading Jin-seok to uncover a web of secrets and conspiracies that challenge his perception of reality. The film has been praised for its intricate plot and unexpected twists, keeping audiences on the edge of their seats. It has been described as a \"trippy ride\" with a time-bending narrative that explores themes of memory, identity, and trust. \"Forgotten\" is available for streaming on Netflix."
     },
     {
-      "id": "9",
+      "id": "nightmare's-threshold",
       "title": "Nightmare's Threshold",
       "imageSrc": "9.jpg",
       "imageAlt": "Nightmare's Threshold",
@@ -97,7 +97,7 @@
       "description": "A chilling horror film about a man trapped in a nightmarish world with no escape."
     },
     {
-      "id": "10",
+      "id": "eternal-hunt",
       "title": "Eternal Hunt",
       "imageSrc": "10.jpg",
       "imageAlt": "Eternal Hunt",
@@ -107,7 +107,7 @@
       "description": "A dark fantasy tale of a warrior on a never-ending quest to defeat a powerful enemy."
     },
     {
-      "id": "11",
+      "id": "legacy-of-the-void",
       "title": "Legacy of the Void",
       "imageSrc": "11.jpg",
       "imageAlt": "Legacy of the Void",
@@ -117,7 +117,7 @@
       "description": "A fast-paced action film where a group of elite soldiers confront a deadly alien force."
     },
     {
-      "id": "12",
+      "id": "shadow's-crescent",
       "title": "Shadow's Crescent",
       "imageSrc": "12.jpg",
       "imageAlt": "Shadow's Crescent",
@@ -127,7 +127,7 @@
       "description": "A supernatural horror where an ancient curse resurfaces to haunt a small town."
     },
     {
-      "id": "13",
+      "id": "crimson-dawn",
       "title": "Crimson Dawn",
       "imageSrc": "13.jpg",
       "imageAlt": "Crimson Dawn",
@@ -137,7 +137,7 @@
       "description": "A fantasy epic about a kingdom threatened by an ancient power, forcing a young prince to step up."
     },
     {
-      "id": "14",
+      "id": "silent-kingdom",
       "title": "Silent Kingdom",
       "imageSrc": "14.jpg",
       "imageAlt": "Silent Kingdom",
@@ -147,7 +147,7 @@
       "description": "A young hero must defend a silent kingdom from dark forces bent on its destruction."
     },
     {
-      "id": "15",
+      "id": "mystic-rite",
       "title": "Mystic Rite",
       "imageSrc": "15.jpg",
       "imageAlt": "Mystic Rite",
@@ -157,7 +157,7 @@
       "description": "A high-stakes fantasy adventure where magic users battle for control over an ancient artifact."
     },
     {
-      "id": "16",
+      "id": "reign-of-the-lost",
       "title": "Reign of the Lost",
       "imageSrc": "16.jpg",
       "imageAlt": "Reign of the Lost",
@@ -167,7 +167,7 @@
       "description": "A terrifying story about a cursed kingdom and its desperate fight for survival."
     },
     {
-      "id": "17",
+      "id": "timeless-myth",
       "title": "Timeless Myth",
       "imageSrc": "17.jpg",
       "imageAlt": "Timeless Myth",
@@ -184,10 +184,10 @@
       "rating": "6.3",
       "year": "2022",
       "description": "A gripping fantasy about fallen heroes who must rise again to face their past mistakes.",
-      "id": "18"
+      "id": "oath-of-the-fallen"
     },
     {
-      "id": "19",
+      "id": "veil-of-night",
       "title": "Veil of Night",
       "imageSrc": "19.jpg",
       "imageAlt": "Veil of Night",
@@ -197,7 +197,7 @@
       "description": "A powerful drama set against a world on the brink of collapse, focusing on human resilience."
     },
     {
-      "id": "20",
+      "id": "guardians-of-twilight",
       "title": "Guardians of Twilight",
       "imageSrc": "20.jpg",
       "imageAlt": "Guardians of Twilight",
