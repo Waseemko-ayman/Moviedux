@@ -1,10 +1,10 @@
-import "./style.css";
-import Button from "../../atoms/Button";
-import { useNavigate } from "react-router-dom";
-import { PATHS } from "../../../router/paths";
-import TitledImage from "../Image";
-import { useAuthContext } from "../../../context/AuthContext";
-import { ROLES } from "../../../router/role";
+import Button from '../../atoms/Button';
+import { useNavigate } from 'react-router-dom';
+import { PATHS } from '../../../router/paths';
+import TitledImage from '../Image';
+import { useAuthContext } from '../../../context/AuthContext';
+import { ROLES } from '../../../router/role';
+import { StyledMovieCard } from './style';
 
 const MovieCard = ({
   isWatchlisted,
@@ -17,25 +17,25 @@ const MovieCard = ({
   const navigate = useNavigate();
 
   const handleEdit = (id) => {
-    navigate(PATHS.MOVIES.EDIT.replace(":id", id));
+    navigate(PATHS.MOVIES.EDIT.replace(':id', id));
   };
 
   const handleError = (e) => {
-    e.target.src = "assets/default.jpg";
+    e.target.src = 'assets/default.jpg';
   };
 
   const getRatingClass = (rating) => {
     if (rating >= 8) {
-      return "rating-good";
+      return 'rating-good';
     } else if (rating >= 5 && rating < 8) {
-      return "rating-ok";
+      return 'rating-ok';
     } else {
-      return "rating-bad";
+      return 'rating-bad';
     }
   };
 
   return (
-    <div className="movie__card">
+    <StyledMovieCard>
       <TitledImage
         src={`/assets/${movie?.imageSrc}`}
         alt={movie?.imageAlt}
@@ -45,37 +45,33 @@ const MovieCard = ({
         loading="lazy"
       />
       <div className="movie__card__info">
-        <div className="header">
-          <h3 className="movie__card__title">{movie?.title}</h3>
+        <div>
+          <h3>{movie?.title}</h3>
           <div>
-            <span className="movie__card__genre">{movie?.genre}</span>
-            <span
-              className={`movie__card__rating ${getRatingClass(movie?.rating)}`}
-            >
+            <span>{movie?.genre}</span>
+            <span className={getRatingClass(movie?.rating)}>
               {movie?.rating}
             </span>
           </div>
         </div>
-        <label className="switch">
+        <label>
           <input
             type="checkbox"
             checked={isWatchlisted}
             onChange={() => toggleWatchlist(movie?.id)}
           />
           <span className="slider">
-            <span className="slider__label">
-              {isWatchlisted ? "In Watchlist" : "Add to Watchlist"}
-            </span>
+            <span>{isWatchlisted ? 'In Watchlist' : 'Add to Watchlist'}</span>
           </span>
         </label>
         {role === ROLES.ADMIN && (
-          <div className="movie__settings">
+          <div>
             <Button handleClick={() => handleEdit(movie.id)}>Edit</Button>
             <Button handleClick={() => handleDelete(movie.id)}>Delete</Button>
           </div>
         )}
       </div>
-    </div>
+    </StyledMovieCard>
   );
 };
 

@@ -1,27 +1,36 @@
-import './style.css';
 import LinkItem from '../../atoms/LinkItem';
 import { PATHS } from '../../../router/paths';
 import { useAuthContext } from '../../../context/AuthContext';
 import { ROLES } from '../../../router/role';
 import Button from '../../atoms/Button';
+import { useLocation } from 'react-router-dom';
+import { StyledNavbar } from './style';
 
 const Navbar = () => {
   const { role, user, logout } = useAuthContext();
+  const location = useLocation();
+
+  const isLoginPage = location.pathname === PATHS.LOGIN;
+  const isSignupPage = location.pathname === PATHS.SIGNUP;
 
   const handleClick = () => {
     logout();
   };
 
   return (
-    <nav>
+    <StyledNavbar>
       {role === ROLES.GUEST ? (
         <ul>
-          <li>
-            <LinkItem linkPath={PATHS.LOGIN} children="Login" />
-          </li>
-          <li>
-            <LinkItem linkPath={PATHS.SIGNUP} children="Singup" />
-          </li>
+          {!isLoginPage && (
+            <li>
+              <LinkItem linkPath={PATHS.LOGIN} children="Login" />
+            </li>
+          )}
+          {!isSignupPage && (
+            <li>
+              <LinkItem linkPath={PATHS.SIGNUP} children="Signup" />
+            </li>
+          )}
         </ul>
       ) : (
         <>
@@ -44,7 +53,7 @@ const Navbar = () => {
           </div>
         </>
       )}
-    </nav>
+    </StyledNavbar>
   );
 };
 

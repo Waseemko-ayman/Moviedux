@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import "./style.css";
+import { Link } from 'react-router-dom';
+import { StyledInput, StyledInputWrapper } from './style';
 
 const Input = ({
   inputType,
@@ -14,9 +14,9 @@ const Input = ({
   register = () => {},
 }) => {
   return (
-    <>
-      {inputType === "textarea" ? (
-        <div className="input__wrapper textarea">
+    <StyledInput>
+      {inputType === 'textarea' ? (
+        <StyledInputWrapper className="textarea">
           <textarea
             type={inputType}
             id={inputId}
@@ -25,8 +25,8 @@ const Input = ({
             placeholder={placeholder}
             onChange={handleChange}
           />
-        </div>
-      ) : inputType === "checkbox" ? (
+        </StyledInputWrapper>
+      ) : inputType === 'checkbox' ? (
         <div className="checkbox">
           <label className="custom__checkbox">
             <input
@@ -45,7 +45,7 @@ const Input = ({
           </p>
         </div>
       ) : (
-        <div className="input__wrapper">
+        <StyledInputWrapper>
           <input
             type={inputType}
             id={inputId}
@@ -55,12 +55,10 @@ const Input = ({
             onChange={handleChange}
             {...register(inputName)}
           />
-          {showImage && (
-            <img src={eyeImgSrc} alt="icon" onClick={onClick} />
-          )}
-        </div>
+          {showImage && <img src={eyeImgSrc} alt="icon" onClick={onClick} />}
+        </StyledInputWrapper>
       )}
-    </>
+    </StyledInput>
   );
 };
 

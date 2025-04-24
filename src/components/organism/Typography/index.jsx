@@ -1,5 +1,3 @@
-import "./style.css";
-
 export const H1 = ({ children, className }) => {
   return <h1 className={`t__h1 ${className}`}>{children}</h1>;
 };

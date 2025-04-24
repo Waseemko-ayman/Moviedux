@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useAuthContext } from "../../context/AuthContext";
-import Input from "../../components/atoms/Input";
-import Button from "../../components/atoms/Button";
-import "./style.css";
-import { LOGIN_INPUTS } from "../../constants/auth";
-import * as Yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import ContentLoading from "../../components/molecules/ContentLoading";
+import React, { useState } from 'react';
+import { useAuthContext } from '../../context/AuthContext';
+import Input from '../../components/atoms/Input';
+import Button from '../../components/atoms/Button';
+import { LOGIN_INPUTS } from '../../constants/auth';
+import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import ContentLoading from '../../components/molecules/ContentLoading';
+import { StyledErrorMessage, StyledFieldsBox, StyledLabel } from '../../styles/common';
 
 const formSchema = Yup.object({
-  email: Yup.string().email().required("Email is required"),
-  password: Yup.string().required("Password is required"),
+  email: Yup.string().email().required('Email is required'),
+  password: Yup.string().required('Password is required'),
 });
 
 const SignupPage = () => {
@@ -39,8 +39,8 @@ const SignupPage = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {LOGIN_INPUTS.map(({ id, label, type, name }) => (
-        <div key={id} className="login">
-          <label htmlFor={id}>{label}</label>
+        <StyledFieldsBox key={id}>
+          <StyledLabel htmlFor={id}>{label}</StyledLabel>
           <Input
             key={id}
             inputType={
@@ -57,8 +57,10 @@ const SignupPage = () => {
             onClick={handleShowPass}
             register={register}
           />
-          {errors[name] && <p className="error">{errors[name]?.message}</p>}
-        </div>
+          {errors[name] && (
+            <StyledErrorMessage>{errors[name]?.message}</StyledErrorMessage>
+          )}
+        </StyledFieldsBox>
       ))}
 
       <Button typeOf="submit">

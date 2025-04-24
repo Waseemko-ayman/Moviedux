@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './style.css';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import { INPUTS_ARRAY } from '../../../constants/inputsArray';
@@ -7,6 +6,7 @@ import * as Yup from 'yup';
 import ContentLoading from '../ContentLoading';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { StyledMovieForm } from './style';
 
 const formSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -76,22 +76,22 @@ const MovieForm = ({ movie, onSubmit, isLoading }) => {
   };
 
   return (
-    <form className="movie__form" onSubmit={handleSubmit(formSubmitHandler)}>
+    <StyledMovieForm onSubmit={handleSubmit(formSubmitHandler)}>
       {INPUTS_ARRAY.map(({ id, label, name, type, placeholder }) => (
-        <div key={id} className="form-group">
+        <div key={id}>
           <label htmlFor={id}>{label}</label>
           {id === 'uploadImage' ? (
             <>
-              <div className="file-upload-wrapper">
-                <span className="file-upload-text">{fileName}</span>
-                <label htmlFor="uploadImage" className="file-upload-label">
+              <div className="file_upload_wrapper">
+                <span>{fileName}</span>
+                <label htmlFor="uploadImage">
                   <i className="fas fa-paperclip"></i>
                 </label>
                 <input
                   id={id}
                   type="file"
                   accept="assets/*"
-                  className="file-upload-input"
+                  className="file_upload_input"
                   onChange={(e) => {
                     handleImageChange(e);
                   }}
@@ -120,7 +120,7 @@ const MovieForm = ({ movie, onSubmit, isLoading }) => {
       <Button typeOf="submit" disabled={isLoading}>
         {isLoading ? <ContentLoading size={24} /> : 'Submit'}
       </Button>
-    </form>
+    </StyledMovieForm>
   );
 };
 

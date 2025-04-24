@@ -1,14 +1,14 @@
-import React, { lazy, Suspense, useContext } from "react";
-import "./style.css";
-import * as T from "../../components/organism/Typography";
-import { useNavigate } from "react-router-dom";
-import { MovieContext } from "../../context/MovieContext";
-import { PATHS } from "../../router/paths";
-import ContentLoading from "../../components/molecules/ContentLoading";
+import React, { lazy, Suspense, useContext } from 'react';
+import * as T from '../../components/organism/Typography';
+import { useNavigate } from 'react-router-dom';
+import { MovieContext } from '../../context/MovieContext';
+import { PATHS } from '../../router/paths';
+import ContentLoading from '../../components/molecules/ContentLoading';
+import { StyledWatchlistPage } from './style';
 const MoviesGridDiv = lazy(() =>
-  import("../../components/molecules/MoviesGridDiv")
+  import('../../components/molecules/MoviesGridDiv')
 );
-const MovieCard = lazy(() => import("../../components/molecules/MovieCard"));
+const MovieCard = lazy(() => import('../../components/molecules/MovieCard'));
 
 const WatchlistPage = () => {
   const { movies, watchlist, toggleWatchlist } = useContext(MovieContext);
@@ -16,12 +16,12 @@ const WatchlistPage = () => {
   const navigate = useNavigate();
 
   const handleClick = (id) => {
-    navigate(PATHS.MOVIES.VIEW.replace(":id", id));
+    navigate(PATHS.MOVIES.VIEW.replace(':id', id));
   };
 
   return (
-    <div>
-      <T.H1 className="title">Your Watchlist</T.H1>
+    <StyledWatchlistPage>
+      <T.H1>Your Watchlist</T.H1>
       <Suspense fallback={<ContentLoading size={50} LoadingText />}>
         <MoviesGridDiv>
           {watchlist.map((id) => {
@@ -38,7 +38,7 @@ const WatchlistPage = () => {
           })}
         </MoviesGridDiv>
       </Suspense>
-    </div>
+    </StyledWatchlistPage>
   );
 };
 

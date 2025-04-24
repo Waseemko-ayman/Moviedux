@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { MovieContext } from "../../context/MovieContext";
 import { PATHS } from "../../router/paths";
 import Input from "../../components/atoms/Input";
-import "./style.css";
 import ContentLoading from "../../components/molecules/ContentLoading";
 import ErrorFetching from "../../components/atoms/ErrorFetching";
 

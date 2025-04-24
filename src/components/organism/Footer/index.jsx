@@ -1,13 +1,11 @@
-import "./style.css";
+import { StyledFooter } from './style';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer>
-      <p className="footer-text">
-        &copy; {currentYear} Moviedux, All rights reserved.
-      </p>
-    </footer>
+    <StyledFooter>
+      <p>&copy; {currentYear} Moviedux, All rights reserved.</p>
+    </StyledFooter>
   );
 };
 

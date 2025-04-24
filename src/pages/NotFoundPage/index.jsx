@@ -1,11 +1,11 @@
-import * as T from "../../components/organism/Typography";
-import "./style.css";
+import * as T from '../../components/organism/Typography';
+import { StyledNotFount } from './style';
 
 const NotFoundPage = () => {
   return (
-    <div className="not__found">
+    <StyledNotFount>
       <T.H1>Oops! Not Found Page</T.H1>
-    </div>
+    </StyledNotFount>
   );
 };
 

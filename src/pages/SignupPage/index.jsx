@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthContext } from '../../context/AuthContext';
 import Input from '../../components/atoms/Input';
-import './style.css';
 import Button from '../../components/atoms/Button';
 import { SIGNUP_INPUTS } from '../../constants/auth';
 import * as Yup from 'yup';
@@ -10,6 +9,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../router/paths';
 import ContentLoading from '../../components/molecules/ContentLoading';
+import {
+  StyledErrorMessage,
+  StyledFieldsBox,
+  StyledLabel,
+} from '../../styles/common';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex =
@@ -71,8 +75,10 @@ const SignupPage = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {SIGNUP_INPUTS.map(({ id, label, type, name }) => (
-        <div key={id} className="box">
-          {label !== 'checkbox' && <label htmlFor={id}>{label}</label>}
+        <StyledFieldsBox key={id}>
+          {label !== 'checkbox' && (
+            <StyledLabel htmlFor={id}>{label}</StyledLabel>
+          )}
           <Input
             inputType={
               type === 'password'
@@ -92,8 +98,10 @@ const SignupPage = () => {
             onClick={() => handleShowPass(name)}
             register={register}
           />
-          {errors[name] && <p className="error">{errors[name]?.message}</p>}
-        </div>
+          {errors[name] && (
+            <StyledErrorMessage>{errors[name]?.message}</StyledErrorMessage>
+          )}
+        </StyledFieldsBox>
       ))}
       <Button typeOf="submit">
         {isLoading ? <ContentLoading size={24} /> : 'Signup'}

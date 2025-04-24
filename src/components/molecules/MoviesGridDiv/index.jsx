@@ -1,7 +1,7 @@
-import "./style.css";
+import { StyledMoviesGrid } from './style';
 
 const MoviesGridDiv = ({ children }) => {
-  return <div className="movies__grid">{children}</div>;
+  return <StyledMoviesGrid>{children}</StyledMoviesGrid>;
 };
 
 export default MoviesGridDiv;

@@ -1,11 +1,11 @@
-import "./style.css";
-import * as T from "../../organism/Typography";
+import * as T from '../../organism/Typography';
+import { StyledError } from './style';
 
 const ErrorFetching = ({ errorText }) => {
   return (
-    <div className="error__fetching">
+    <StyledError>
       <T.H1>{errorText}</T.H1>
-    </div>
+    </StyledError>
   );
 };
 

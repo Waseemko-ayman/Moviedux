@@ -1,26 +1,23 @@
-import * as T from "../../organism/Typography";
-import "./style.css";
-import LinkItem from "../../atoms/LinkItem";
-import { PATHS } from "../../../router/paths";
-import Button from "../../atoms/Button";
-import TitledImage from "../Image";
-import { useAuthContext } from "../../../context/AuthContext";
-import { ROLES } from "../../../router/role";
+import * as T from '../../organism/Typography';
+import LinkItem from '../../atoms/LinkItem';
+import { PATHS } from '../../../router/paths';
+import Button from '../../atoms/Button';
+import TitledImage from '../Image';
+import { useAuthContext } from '../../../context/AuthContext';
+import { ROLES } from '../../../router/role';
+import { StyledMoviePage } from './style';
 
 const MoviePageContent = ({ movie, handleEdit }) => {
   const { role } = useAuthContext();
 
   return (
-    <div className="movie__page">
-      <div
-        className="movie__header"
-        style={{ backgroundImage: `url(/assets/${movie?.imageSrc})` }}
-      >
+    <StyledMoviePage>
+      <header style={{ backgroundImage: `url(/assets/${movie?.imageSrc})` }}>
         <div className="overlay">
-          <T.H1 className="movie__title">{movie?.title}</T.H1>
-          <p className="movie__tagline">{movie?.tagline}</p>
+          <T.H1>{movie?.title}</T.H1>
+          <p>{movie?.tagline}</p>
         </div>
-      </div>
+      </header>
       <div className="movie__content">
         <div className="movie__details">
           <div className="movie__info">
@@ -46,13 +43,12 @@ const MoviePageContent = ({ movie, handleEdit }) => {
               src={`/assets/${movie?.imageSrc}`}
               alt={movie?.imageAlt}
               title={movie?.imageAlt}
-              className="movie__poster"
               loading="lazy"
             />
           </div>
         </div>
       </div>
-    </div>
+    </StyledMoviePage>
   );
 };
 

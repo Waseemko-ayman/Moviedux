@@ -1,13 +1,13 @@
-import React from "react";
-import * as T from "../../organism/Typography";
-import "./style.css";
+import React from 'react';
+import * as T from '../../organism/Typography';
+import { StyledPagesLoading } from './style';
 
 const PagesLoading = ({ showTitle }) => {
   return (
-    <div className="pages__loading">
+    <StyledPagesLoading>
       <img src="/fav.png" alt="moviedux" title="moviedux" />
       {showTitle && <T.H1>Moviedux</T.H1>}
-    </div>
+    </StyledPagesLoading>
   );
 };
 
