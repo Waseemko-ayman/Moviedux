@@ -7,6 +7,7 @@ import Input from '../../components/atoms/Input';
 import ContentLoading from '../../components/molecules/ContentLoading';
 import ErrorFetching from '../../components/atoms/ErrorFetching';
 import { useDebounce } from 'use-debounce';
+import { StyledMoviesPage } from './style';
 
 const MoviesGridDiv = lazy(() =>
   import('../../components/molecules/MoviesGridDiv')
@@ -57,7 +58,7 @@ const MoviesPage = () => {
     }
   };
 
-  const matchesSearchTerm = (movie, searchTerm) => {
+  const matchesSearchTerm = (movie, debouncedSearchTerm) => {
     return movie.title
       .toLowerCase()
       .includes(debouncedSearchTerm.toLowerCase());
@@ -79,7 +80,7 @@ const MoviesPage = () => {
   };
 
   return (
-    <div className="movies__page">
+    <StyledMoviesPage>
       <Input
         inputType="text"
         placeholder="Search movies..."
@@ -96,21 +97,28 @@ const MoviesPage = () => {
         <ErrorFetching errorText="Error fetching movies !" />
       ) : (
         <Suspense fallback={<ContentLoading size={50} LoadingText />}>
-          <MoviesGridDiv>
-            {filteredMovies.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                movie={movie}
-                toggleWatchlist={toggleWatchlist}
-                isWatchlisted={watchlist.includes(movie.id)}
-                handleClick={handleClick}
-                handleDelete={handleDelete}
-              />
-            ))}
-          </MoviesGridDiv>
+          {filteredMovies.length > 0 ? (
+            <MoviesGridDiv>
+              {filteredMovies.map((movie) => (
+                <MovieCard
+                  key={movie.id}
+                  movie={movie}
+                  toggleWatchlist={toggleWatchlist}
+                  isWatchlisted={watchlist.includes(movie.id)}
+                  handleClick={handleClick}
+                  handleDelete={handleDelete}
+                />
+              ))}
+            </MoviesGridDiv>
+          ) : (
+            <div className="no-movies-message">
+              <span>Oops!</span>
+              <p>No movies found matching your search.</p>
+            </div>
+          )}
         </Suspense>
       )}
-    </div>
+    </StyledMoviesPage>
   );
 };
 

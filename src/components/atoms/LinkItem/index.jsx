@@ -1,10 +1,15 @@
-import { StyledLink } from './style';
+import { Link } from 'react-router-dom';
+import { StyledButtonLink } from '../../../styles/common';
 
 const LinkItem = ({ children, linkPath, margin }) => {
   return (
-    <StyledLink to={linkPath} className={margin ? 'margin' : ''}>
+    <StyledButtonLink
+      as={Link}
+      to={linkPath}
+      className={margin ? 'margin' : ''}
+    >
       {children}
-    </StyledLink>
+    </StyledButtonLink>
   );
 };
 

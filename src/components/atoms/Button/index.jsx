@@ -1,10 +1,10 @@
-import { StyledButton } from './style';
+import { StyledButtonLink } from '../../../styles/common';
 
 const Button = ({ children, handleClick, typeOf }) => {
   return (
-    <StyledButton typeof={typeOf} onClick={handleClick}>
+    <StyledButtonLink typeof={typeOf} onClick={handleClick}>
       {children}
-    </StyledButton>
+    </StyledButtonLink>
   );
 };
 

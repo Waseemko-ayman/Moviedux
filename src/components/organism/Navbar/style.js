@@ -16,4 +16,10 @@ export const StyledNavbar = styled.nav`
     font-size: 20px;
     margin-top: 15px;
   }
+
+  @media (max-width: 426px) {
+    ul {
+      gap: 10px;
+    }
+  }
 `;
