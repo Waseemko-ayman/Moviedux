@@ -14,7 +14,7 @@ const formSchema = Yup.object({
   password: Yup.string().required('Password is required'),
 });
 
-const SignupPage = () => {
+const LoginPage = () => {
   const [showPass, setShowPass] = useState(false);
   const { login, isLoading } = useAuthContext();
 
@@ -29,6 +29,7 @@ const SignupPage = () => {
 
   const onSubmit = async (data) => {
     login(data);
+    console.log(data)
     reset();
   };
 
@@ -70,4 +71,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default LoginPage;

@@ -19,6 +19,17 @@ const Input = React.forwardRef(
     },
     ref
   ) => {
+    const isRegistered = typeof register === 'function';
+
+    const commonProps = isRegistered
+      ? register(inputName)
+      : {
+          name: inputName,
+          value: inputValue,
+          onChange: handleChange,
+          ref,
+        };
+
     return (
       <StyledInput>
         {inputType === 'textarea' ? (
@@ -26,11 +37,8 @@ const Input = React.forwardRef(
             <textarea
               type={inputType}
               id={inputId}
-              name={inputName}
-              value={inputValue}
               placeholder={placeholder}
-              onChange={handleChange}
-              ref={ref}
+              {...commonProps}
             />
           </StyledInputWrapper>
         ) : inputType === 'checkbox' ? (
@@ -39,12 +47,8 @@ const Input = React.forwardRef(
               <input
                 type={inputType}
                 id={inputId}
-                name={inputName}
-                value={inputValue}
                 placeholder={placeholder}
-                onChange={handleChange}
-                {...register(inputName)}
-                ref={ref}
+                {...commonProps}
               />
               <span></span>
             </label>
@@ -57,12 +61,8 @@ const Input = React.forwardRef(
             <input
               type={inputType}
               id={inputId}
-              name={inputName}
-              value={inputValue}
               placeholder={placeholder}
-              onChange={handleChange}
-              {...register(inputName)}
-              ref={ref}
+              {...commonProps}
             />
             {showImage && <img src={eyeImgSrc} alt="icon" onClick={onClick} />}
           </StyledInputWrapper>

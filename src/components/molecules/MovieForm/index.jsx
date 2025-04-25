@@ -109,7 +109,7 @@ const MovieForm = ({ movie, onSubmit, isLoading }) => {
                 inputId={id}
                 inputName={name}
                 placeholder={placeholder}
-                {...register(name)}
+                register={register}
               />
               {errors[name] && <p className="error">{errors[name]?.message}</p>}
             </>

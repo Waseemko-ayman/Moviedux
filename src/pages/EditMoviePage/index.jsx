@@ -23,7 +23,7 @@ const EditMoviePage = () => {
 
   return (
     <div className="movie__edit">
-      <T.H1>Edit {id} Movie</T.H1>
+      <T.H1>Edit {movie.title} Movie</T.H1>
       <MovieForm
         movie={movie}
         onSubmit={handleEditMovie}
